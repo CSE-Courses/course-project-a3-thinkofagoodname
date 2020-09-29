@@ -8,3 +8,6 @@ def home(request):
 
 def download(request):
     return HttpResponse("You are at the download page.")
+
+def project(request):
+    return HttpResponse("You are at the project page.")
