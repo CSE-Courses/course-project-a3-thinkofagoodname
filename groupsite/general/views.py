@@ -4,10 +4,10 @@ from django.http import HttpResponse
 # Create your views here.
 
 def home(request):
-    return HttpResponse("You are at the home page.")
+    return render(request, 'general/home.html')
 
 def download(request):
-    return HttpResponse("You are at the download page.")
+    return render(request, 'general/download.html')
 
 def project(request):
-    return HttpResponse("You are at the project page.")
+    return render(request, 'general/project.html')
