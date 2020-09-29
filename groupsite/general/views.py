@@ -5,3 +5,6 @@ from django.http import HttpResponse
 
 def home(request):
     return HttpResponse("You are at the home page.")
+
+def download(request):
+    return HttpResponse("You are at the download page.")
