@@ -11,3 +11,6 @@ def download(request):
 
 def project(request):
     return render(request, 'general/project.html')
+
+def sharing(request):
+    return render(request, 'general/sharing.html')
