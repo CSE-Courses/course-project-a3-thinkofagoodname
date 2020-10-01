@@ -1,0 +1,21 @@
+# Credits
+
+## Development team and their respective GitHub profiles
+* [Ryan Dils](https://github.com/RyChrome)
+* []()
+* []()
+* []()
+
+
+## Photographers and their respective photographs
+* [Laura Wielo](https://unsplash.com/photos/jPMKPg7qtZM)
+* [Yvette de Wit](https://unsplash.com/photos/8XLapfNMW04)
+* [Marcela Laskoski](https://unsplash.com/photos/YrtFlrLo2DQ)
+* [Anthony Delanoix](https://unsplash.com/photos/hzgs56Ze49s)
+* [Vinicius Amano](https://unsplash.com/photos/UqnGzta1tzQ)
+* [Vinicius Amano](https://unsplash.com/photos/unNHOqWENAs)
+* [Samuel Zeller](https://unsplash.com/photos/BeOW_PJjA0w)
+* [Contentkraft](https://unsplash.com/photos/FfyCtBB8fds)
+* [Contentkraft](https://unsplash.com/photos/3f1AcQK3wB4)
+* [Yvette de Wit](https://unsplash.com/photos/NYrVisodQ2M)
+* [Daniel Robert](https://unsplash.com/photos/MRxD-J9-4ps)
