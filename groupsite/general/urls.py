@@ -8,5 +8,6 @@ urlpatterns = [
     path('project/', views.project, name='project'),
     path('sharing/', views.sharing, name='sharing'),
     path('shared/', views.shared, name='shared'),
+    path('editor/', views.editor, name='editor'),
 ]
 

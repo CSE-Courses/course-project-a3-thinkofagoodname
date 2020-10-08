@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Openbeats</title>
+</head>
+
+<head>
+
+<title>Editor</title>
+
+<link rel=”stylesheet” href=”style.css”>
+
+</head>
+<body style="background-color:black">
+
+<h1><p style="color:white;">Editor
+
+
+</p></h1>
+<label for="Your songs" style="color:white;"> Choose one of your songs to Edit:</label>
+<select name="Your songs" id="Your songs">
+	<option value="first song">Edited Moonlight Sonata</option>
+	<option value="second song">Original Boppin' Hit</option>
+	<option value="third song">Fur Elise</option>
+</select>
+
+
+<button type="button" onclick="openEditor()" name = "editorOpener">
+	OPEN Editor
+</button>
+
+
+<style>
+.form-container {
+  max-width: 1000px;
+  padding: 10px;
+  background-color: black;
+  color:white;
+}
+.form-popup {
+  display: none;
+  position: fixed;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+</style>
+<div style= "text-align:center" class="form-popup" id="editor">
+    <form action="/action_page.php" class="form-container">
+          <h1>Editor</h1>
+          <button type="button" name ="editorCloser" onclick="closeEditor()">
+              Close
+          </button>
+      </form>
+</div>
+
+<script>
+function openEditor(){
+    document.getElementById("editor").style.display="block";
+    }
+function closeEditor(){
+     document.getElementById("editor").style.display="none";
+    }
+</script>
+
+</body>
+
+</html>
