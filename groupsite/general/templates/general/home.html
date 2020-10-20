@@ -2,33 +2,48 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Openbeats</title>
+    
+    <div class="headerLinks">
+    <a class="active" href="home.html">Home</a>
+    <a href="editor.html">Editor</a>
+    <a href="shared.html">Shared</a>
+    <a href="Sharing.html">Sharing</a>
+    <a href="download.html">Download</a>
+    <a href="project.html">Project</a>
+    </div>
 <style>
-.button {
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
 
-.button0 {background-color: #6DA34D;} 
-.button1 {background-color: #548687;}
-.button2 {background-color: #8fbc94;} 
-.button3 {background-color: #c5e99b;} 
-.button4 {background-color: #56445d;} 
+body {
+  margin: 0;
+  font-family: Arial;
+}
+.headerLinks {
+  overflow: hidden;
+  background-color: #220C10;
+}
+.headerLinks a {
+  float: left;
+  color: #AAA;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 18px;
+}
+.headerLinks a:hover {
+  background-color: #5b6579;
+  color: white;
+}
+.headerLinks a.active {
+  background-color: #2f2963;
+  color: white;
+}
+ 
 </style>
+
 </head>
+<body style="background:radial-gradient(circle, #b0d0d3,#9bbec7);">
+<h1 style="background-color:#9bbec7;">Home Page</h1>
 <body>
-    <h1>Home Page</h1>
-    <button class="button button0"onclick="document.location='Sharing.html'">Sharing</button>
-    <button class="button button4"onclick="document.location='shared.html'">Shared</button>
-    <button class="button button1"onclick="document.location='editor.html'"=>Editor</button>
-    <button class="button button2"onclick="document.location='download.html'"=>Download</button>
-    <button class="button button3"onclick="document.location='project.html'"=>Project</button>
+  <h1><p style="color:white;text-align: center;">Open Beats</p></h1>
 </body>
-</html>
+</html> 
