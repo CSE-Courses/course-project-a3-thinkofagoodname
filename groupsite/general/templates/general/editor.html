@@ -82,11 +82,50 @@ body {
   z-index: 9;
 }
 
+.buttonStyle {
+  padding: 10px 20px;
+  text-align: center;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.buttonStyle1 {
+
+  position: inherit;
+  left:10px ; bottom: 10px ;
+}
+.buttonStyle1:hover {
+  background-color: blue;
+  color: white;
+}
+.buttonStyle2 {
+
+  position: inherit;
+  left:10px ; top: 30px ;
+}
+
+.buttonStyle2:hover {
+  background-color: #4CBF20;
+  color: white;
+}
+
 </style>
 <div style= "text-align:center" class="form-popup" id="editor">
     <form action="/action_page.php" class="form-container">
           <h1>Editor</h1>
-          <button type="button" name ="editorCloser" onclick="closeEditor()">
+
+           <div>
+          <label for="Instruments" style="color:white;"> Choose which instrument you want to use:</label>
+          <select name="Instruments" id="Instruments">
+            <option value="first song">Synth 1</option>
+            <option value="second song">Synth 2</option>
+            <option value="third song">Synth 3</option>
+          </select>
+          <button type="button" class ="buttonStyle buttonStyle2" name ="KeyBinder">Bind instrument to keys</button>
+          </div>
+
+
+          <button type="button" name ="editorCloser" class ="buttonStyle buttonStyle1" onclick="closeEditor()">
               Close
           </button>
       </form>
