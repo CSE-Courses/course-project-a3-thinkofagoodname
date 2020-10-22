@@ -14,3 +14,9 @@ def project(request):
 
 def sharing(request):
     return render(request, 'general/sharing.html')
+
+def shared(request):
+    return render(request, 'general/shared.html')
+
+def editor(request):
+    return render(request,'general/editor.html')
