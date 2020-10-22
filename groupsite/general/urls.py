@@ -9,5 +9,6 @@ urlpatterns = [
     path('sharing/', views.sharing, name='sharing'),
     path('shared/', views.shared, name='shared'),
     path('editor/', views.editor, name='editor'),
+    path('home/', views.home, name='home'),
 ]
 

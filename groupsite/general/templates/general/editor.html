@@ -4,6 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Openbeats</title>
+<!-- for header buttons -->
+    <div class="headerLinks">
+    <a href="/home">Home</a>
+    <a class="active" href="/editor">Editor</a>
+    <a href="/shared">Shared</a>
+    <a href="/sharing">Sharing</a>
+    <a href="/download">Download</a>
+    <a href="/project">Project</a>
+    </div>
 </head>
 
 <head>
@@ -31,19 +40,34 @@
 	OPEN Editor
 </button>
 
-<div style= "text-align:center" class="form-popup" id="editor">	
-    <form action="/action_page.php" class="form-container">
-          <h1>Editor</h1>
-          <button type="button" name ="editorCloser" onclick="closeEditor()">
-              Close
-          </button>
-          
-	<audio controls
-         <source id=playsrc src= "moonlight.mp3" onload="this.onload=null; this.src=initAudio();" type="audio/mpeg"/> 
-    	</audio>
-      </form>
-</div>
 </body>
+<!-- for header buttons -->
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+}
+.headerLinks {
+  overflow: hidden;
+  background-color: #220C10;
+}
+.headerLinks a {
+  float: left;
+  color: #AAA;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 18px;
+}
+.headerLinks a:hover {
+  background-color: #5b6579;
+  color: white;
+}
+.headerLinks a.active {
+  background-color: #454372;
+  color: white;
+}
+<style>
 
 <style>
 .form-container {
@@ -59,7 +83,58 @@
   z-index: 9;
 }
 
+.buttonStyle {
+  padding: 10px 20px;
+  text-align: center;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.buttonStyle1 {
+
+  position: inherit;
+  left:10px ; bottom: 10px ;
+}
+.buttonStyle1:hover {
+  background-color: blue;
+  color: white;
+}
+.buttonStyle2 {
+
+  position: inherit;
+  left:10px ; top: 30px ;
+}
+
+.buttonStyle2:hover {
+  background-color: #4CBF20;
+  color: white;
+}
+
 </style>
+<div style= "text-align:center" class="form-popup" id="editor">
+    <form action="/action_page.php" class="form-container">
+          <h1>Editor</h1>
+
+          	<audio controls
+              <source id=playsrc src= "moonlight.mp3"> 
+    	      </audio>
+      
+           <div>
+          <label for="Instruments" style="color:white;"> Choose which instrument you want to use:</label>
+          <select name="Instruments" id="Instruments">
+            <option value="first song">Synth 1</option>
+            <option value="second song">Synth 2</option>
+            <option value="third song">Synth 3</option>
+          </select>
+          <button type="button" class ="buttonStyle buttonStyle2" name ="KeyBinder">Bind instrument to keys</button>
+          </div>
+          
+
+          <button type="button" name ="editorCloser" class ="buttonStyle buttonStyle1" onclick="closeEditor()">
+              Close Editor
+          </button>
+      </form>
+</div>
 
 <script>
 function openEditor(){
