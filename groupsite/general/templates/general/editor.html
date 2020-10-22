@@ -28,11 +28,11 @@
 
 
 </p></h1>
-<label for="Your songs" style="color:white;"> Choose one of your songs to Edit:</label>
-<select name="Your songs" id="Your songs">
-	<option value="first song">Edited Moonlight Sonata</option>
+<label for="YourSongs" style="color:white;"> Choose one of your songs to Edit:</label>
+<select name="YourSongs" id="YourSongs">
+	<option value="moonlight">Edited Moonlight Sonata</option>
 	<option value="second song">Original Boppin' Hit</option>
-	<option value="third song">Fur Elise</option>
+	<option value="furelise">Fur Elise</option>
 </select>
 
 
@@ -40,6 +40,7 @@
 	OPEN Editor
 </button>
 
+</body>
 <!-- for header buttons -->
 <style>
 body {
@@ -114,6 +115,10 @@ body {
     <form action="/action_page.php" class="form-container">
           <h1>Editor</h1>
 
+          	<audio controls
+              <source id=playsrc src= "moonlight.mp3"> 
+    	      </audio>
+      
            <div>
           <label for="Instruments" style="color:white;"> Choose which instrument you want to use:</label>
           <select name="Instruments" id="Instruments">
@@ -123,10 +128,10 @@ body {
           </select>
           <button type="button" class ="buttonStyle buttonStyle2" name ="KeyBinder">Bind instrument to keys</button>
           </div>
-
+          
 
           <button type="button" name ="editorCloser" class ="buttonStyle buttonStyle1" onclick="closeEditor()">
-              Close
+              Close Editor
           </button>
       </form>
 </div>
@@ -134,12 +139,17 @@ body {
 <script>
 function openEditor(){
     document.getElementById("editor").style.display="block";
+    document.getElementById("YourSongs").addEventListener("change",initAudio)
     }
 function closeEditor(){
      document.getElementById("editor").style.display="none";
     }
+function initAudio(){
+	var audio, ext, YourSongs;
+	ext = ".mp3";
+	audio = document.getElementById("YourSongs").value+ext;
+	document.getElementById("playsrc").setAttribute("src",audio);
+}
 </script>
-
-</body>
 
 </html>
