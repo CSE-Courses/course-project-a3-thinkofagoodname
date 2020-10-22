@@ -116,7 +116,7 @@ body {
           <h1>Editor</h1>
 
           	<audio controls
-              <source id="playsrc" src= "moonlight.mp3"> 
+              <source id="playsrc" src= "moonlight.mp3">
     	      </audio>
       
            <div>
@@ -147,7 +147,8 @@ function closeEditor(){
 function initAudio(){
 	var audio, ext, YourSongs;
 	ext = ".mp3";
-	audio = document.getElementById("YourSongs").value+ext;
+	pathToAudio = "/media/songs/"
+	audio = pathToAudio+document.getElementById("YourSongs").value+ext;
 	document.getElementById("playsrc").setAttribute("src",audio);
 }
 </script>
