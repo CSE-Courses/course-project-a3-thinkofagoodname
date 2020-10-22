@@ -117,18 +117,18 @@ body {
     <form action="/action_page.php" class="form-container">
           <h1>Editor</h1>
 
-          	<audio controls>
-            <source id=playsrc src= "moonlight.mp3"> 
+          	<audio controls
+            <source id="playsrc" src= "moonlight.mp3"> 
     	    </audio>
     	    <div>
                 <label for="splitSec">Split at(seconds):</label>
                 <input type="number" name= "splitSec" id= "splitSec" min="1" max="7200">
-                <audio controls class="audio-hidden">
-                <source id=playBefSplit src= "">
+                <audio controls class="audio-hidden"
+                <source id="playBefSplit" src= "">
                 <p>Before splitpoint</p>
                 </audio>
-                <audio controls id="hidAud"  class="audio-hidden">
-                <source id=playAftSplit src= "">
+                <audio controls id="hidAud"  class="audio-hidden"
+                <source id="playAftSplit" src= "">
                 <p>After splitpoint</p>
                 </audio>
             </div>
@@ -166,6 +166,8 @@ function initAudio(){
 function split(){
     var seconds;
     seconds = document.getElementById("splitSec").value;
+    document.getElementById("playAftSplit").display="block";
+    document.getElementById("playBefSplit").display="block";
 }
 </script>
 
