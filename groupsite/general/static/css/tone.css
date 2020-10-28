@@ -1,0 +1,91 @@
+body {
+  background: #545F62;
+  font-family: 'Rationale', sans-serif;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax();
+  width: 90%;
+  padding: 2px;
+  margin: 0 0 0;
+}
+.active{
+  color: #afda;
+}
+.sound-selections:hover, .oscillator-selections:hover {
+  color: #afda;
+}
+.sound-choice-container{
+  height: 50px;
+  width: 430px;
+  background: gray;
+  margin: 0 0 100px ;
+  text-align: center;
+  padding: 15px;
+  position: fixed;
+  bottom: 240px;
+
+
+}
+
+.oscillator-choice-container{
+  height: 50px;
+  width: 360px;
+  background: gray;
+  margin: 0 0 0;
+  text-align: center;
+  padding: 15px;
+  position: fixed;
+  left: 500px;
+  bottom: 340px;
+}
+
+.sounds-label, .oscillator-label {
+  color: #0A0908;
+  font-size: 22px;
+  font-weight: 300;
+  margin: 0 0 0;
+}
+
+.sound-type {
+  color: white;
+  text-align: left;
+  display: flex;
+  margin-top: 5px;
+}
+.oscillator-type {
+  color: white;
+  text-align: left;
+  display: flex;
+  margin-top: 5px;
+
+}
+
+.sound-selections, .oscillator-selections {
+  margin: auto;
+  cursor: pointer;
+  padding: 8px;
+}
+
+
+
+
+
+.active{
+  color: #afda;
+}
+
+
+
+
+
+
+
