@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -81,6 +82,8 @@ body {
   position: fixed;
   border: 3px solid #f1f1f1;
   z-index: 9;
+  width: 900px;
+  height: 400px;
 }
 
 .buttonStyle {
@@ -92,23 +95,23 @@ body {
 
 .buttonStyle1 {
 
-  position: inherit;
-  left:10px ; bottom: 10px ;
+  position: fixed;
+  left:400px ; top: 330px ;
 }
 .buttonStyle1:hover {
   background-color: blue;
   color: white;
 }
-.buttonStyle2 {
 
-  position: inherit;
-  left:10px ; top: 30px ;
-}
 
-.buttonStyle2:hover {
-  background-color: #4CBF20;
-  color: white;
-}
+
+
+
+
+
+
+
+
 
 </style>
 <div style= "text-align:center" class="form-popup" id="editor">
@@ -120,13 +123,70 @@ body {
     	      </audio>
       
            <div>
-          <label for="Instruments" style="color:white;"> Choose which instrument you want to use:</label>
-          <select name="Instruments" id="Instruments">
-            <option value="first song">Synth 1</option>
-            <option value="second song">Synth 2</option>
-            <option value="third song">Synth 3</option>
-          </select>
-          <button type="button" class ="buttonStyle buttonStyle2" name ="KeyBinder">Bind instrument to keys</button>
+          <div class="wrapper">
+          <script src="https://unpkg.com/tone@13.8.25/build/Tone.js"></script>
+          <script src="{% static 'js/tone.js' %}"></script>
+          <link rel="stylesheet" type="text/css" href="{% static 'css/tone.css' %}">
+          <div class="layout">
+
+            <div class="sound-choice-container">
+              <label class="sounds-label">Synth</label>
+             <section class="sound-type">
+               <div class="sound-selections active" 
+                     id="Synth" 
+                     onclick="selectSynthType(id)"> 
+                 Synth
+               </div>
+                <div class="sound-selections" 
+                     id="MonoSynth" 
+                     onclick="selectSynthType(id)"> 
+                 MonoSynth
+                </div>
+                <div class="sound-selections" 
+                    id="AMSynth" 
+                    onclick="selectSynthType(id)"> 
+                  AMSynth
+               </div>
+               <div class="sound-selections" 
+                    id="FMSynth" 
+                    onclick="selectSynthType(id)"> 
+                 FMSynth
+               </div>
+               <div class="sound-selections" 
+                    id="MembraneSynth" 
+                     onclick="selectSynthType(id)"> 
+                 MembraneSynth
+                </div>
+             </section>
+           </div>
+
+            <div class="oscillator-choice-container">
+             <label class="oscillator-label">Oscillator Type</label>
+              <section class="oscillator-type">
+               <div class="oscillator-selections active" 
+                    id="triangle" 
+                    onclick="changeOscillator(id)"> 
+                 Triangle
+               </div>
+               <div class="oscillator-selections" 
+                    id="sine" 
+                    onclick="changeOscillator(id)"> 
+                 Sine
+               </div>
+               <div class="oscillator-selections" 
+                     id="square" 
+                    onclick="changeOscillator(id)"> 
+                  Square
+                </div>
+               <div class="oscillator-selections" 
+                    id="sawtooth" 
+                     onclick="changeOscillator(id)"> 
+                 SawTooth
+                 </div>
+             </section>
+            </div>
+          
+          
           </div>
           
 

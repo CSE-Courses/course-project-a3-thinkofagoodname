@@ -119,7 +119,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+]
 # Media root is the full path where uploaded files will be stored
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Media URl is the public url of the directory. you can access this through the browser
