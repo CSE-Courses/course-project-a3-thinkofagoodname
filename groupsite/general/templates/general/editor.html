@@ -31,14 +31,14 @@
 </p></h1>
 <label for="YourSongs" style="color:white;"> Choose one of your songs to Edit:</label>
 <select name="YourSongs" id="YourSongs">
-	<option value="moonlight">Edited Moonlight Sonata</option>
-	<option value="second song">Original Boppin' Hit</option>
-	<option value="furelise">Fur Elise</option>
+  <option value="moonlight">Edited Moonlight Sonata</option>
+  <option value="second song">Original Boppin' Hit</option>
+  <option value="furelise">Fur Elise</option>
 </select>
 
 
 <button type="button" onclick="openEditor()" name = "editorOpener">
-	OPEN Editor
+  OPEN Editor
 </button>
 
 </body>
@@ -68,9 +68,7 @@ body {
   background-color: #454372;
   color: white;
 }
-<style>
 
-<style>
 .form-container {
   max-width: 1000px;
   padding: 10px;
@@ -86,6 +84,12 @@ body {
   height: 400px;
 }
 
+.audio-hidden {
+  display: none;
+}
+.audio-displayed{
+  display: block;
+}
 .buttonStyle {
   padding: 10px 20px;
   text-align: center;
@@ -118,9 +122,10 @@ body {
     <form action="/action_page.php" class="form-container">
           <h1>Editor</h1>
 
-          	<audio controls
+            <audio controls
+
               <source id="playsrc" src= "moonlight.mp3">
-    	      </audio>
+            </audio>
       
            <div>
           <div class="wrapper">
@@ -188,6 +193,39 @@ body {
           
           
           </div>
+
+            <source id="playsrc" src= "moonlight.mp3"> 
+          </audio>
+          <div>
+                <label for="splitSec">Split at(seconds):</label>
+                <input type="number" id= "splitSec" min="1" max="7200" >
+                <button type="button" id= "splitSub" onclick= "split()">Submit</button>
+                <p id="timesplitext"></p>
+                <label for="playBefSplit"> Audio before split:</label>
+                <audio controls class="audio-hidden" id="playBefSplit"
+                <source  src= "">
+                <p>Before splitpoint</p>
+                </audio>
+                <label for="playAftSplit"> Audio after split:</label>
+                <audio controls id="playAftSplit" class="audio-hidden"
+                <source  src= "">
+                <p>After splitpoint</p>
+                </audio>
+            </div>
+            <div>
+                <button id="startRec" type= "button" onclick= "startRecording(this);" onclick= "stopABLE()">
+                Record from microphone
+                </button>
+                <button id="stopRec"  type= "button" onclick= "stopRecording(this);" onclick="unstopABLE()" disabled= true>
+                Stop recording
+                </button>
+                <table id="recordingslist">
+
+                </table>
+                
+            </div>
+            
+
           
 
           <button type="button" name ="editorCloser" class ="buttonStyle buttonStyle1" onclick="closeEditor()">
@@ -205,12 +243,32 @@ function closeEditor(){
      document.getElementById("editor").style.display="none";
     }
 function initAudio(){
-	var audio, ext, YourSongs;
-	ext = ".mp3";
-	pathToAudio = "/media/songs/"
-	audio = pathToAudio+document.getElementById("YourSongs").value+ext;
-	document.getElementById("playsrc").setAttribute("src",audio);
+  var audio, ext, YourSongs;
+  ext = ".mp3";
+  pathToAudio = "/media/songs/"
+  audio = pathToAudio+document.getElementById("YourSongs").value+ext;
+  document.getElementById("playsrc").setAttribute("src",audio);
+}
+function split(){
+    var seconds;
+    seconds = document.getElementById("splitSec").value;
+    document.getElementById("timesplitext").innerHTML= "Split at "+seconds+" seconds";
+    document.getElementById("playAftSplit").className= "audio-displayed";
+    document.getElementById("playBefSplit").className= "audio-displayed";
+}
+function stopABLE(){
+    document.getElementById("stopRec").disabled= false;
+    document.getElementById("startRec").disabled= true;
+}
+function unstopABLE(){
+    document.getElementById("stopRec").disabled= true;
+    document.getElementById("startRec").disabled= false;
+
 }
 </script>
+// sourced from https://github.com/daaain/JSSoundRecorder sound recording library
+<script src= "js/lib/recorder.js"></script>
+<script src= "js/recordLive.js"> </script>
+<script src= "js/lib/recorderWorker.js"></script>
 
 </html>
