@@ -133,6 +133,18 @@ body {
                 </audio>
             </div>
             <div>
+                <button id="startRec" type= "button" onclick= "startRecording(this);" onclick= "stopABLE()">
+                Record from microphone
+                </button>
+                <button id="stopRec"  type= "button" onclick= "stopRecording(this);" onclick="unstopABLE()" disabled= true>
+                Stop recording
+                </button>
+                <table id="recordingslist">
+
+                </table>
+                
+            </div>
+            <div>
                 <label for="Instruments" style="color:white;"> Choose which instrument you want to use:</label>
                 <select name="Instruments" id="Instruments">
                 <option value="first song">Synth 1</option>
@@ -170,6 +182,19 @@ function split(){
     document.getElementById("playAftSplit").display="block";
     document.getElementById("playBefSplit").display="block";
 }
+function stopABLE(){
+    document.getElementById("stopRec").disabled= false;
+    document.getElementById("startRec").disabled= true;
+}
+function unstopABLE(){
+    document.getElementById("stopRec").disabled= true;
+    document.getElementById("startRec").disabled= false;
+
+}
 </script>
+// sourced from https://github.com/daaain/JSSoundRecorder sound recording library
+<script src= "js/lib/recorder.js"></script>
+<script src= "js/recordLive.js"> </script>
+<script src= "js/lib/recorderWorker.js"></script>
 
 </html>
