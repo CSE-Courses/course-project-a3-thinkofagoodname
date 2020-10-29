@@ -84,7 +84,9 @@ body {
 .audio-hidden {
   display: none;
 }
-
+.audio-displayed{
+  display: block;
+}
 .buttonStyle {
   padding: 10px 20px;
   text-align: center;
@@ -122,13 +124,17 @@ body {
     	    </audio>
     	    <div>
                 <label for="splitSec">Split at(seconds):</label>
-                <input type="number" name= "splitSec" id= "splitSec" min="1" max="7200">
-                <audio controls class="audio-hidden"
-                <source id="playBefSplit" src= "">
+                <input type="number" id= "splitSec" min="1" max="7200" >
+                <button type="button" id= "splitSub" onclick= "split()">Submit</button>
+                <p id="timesplitext"></p>
+                <label for="playBefSplit"> Audio before split:</label>
+                <audio controls class="audio-hidden" id="playBefSplit"
+                <source  src= "">
                 <p>Before splitpoint</p>
                 </audio>
-                <audio controls id="hidAud"  class="audio-hidden"
-                <source id="playAftSplit" src= "">
+                <label for="playAftSplit"> Audio after split:</label>
+                <audio controls id="playAftSplit" class="audio-hidden"
+                <source  src= "">
                 <p>After splitpoint</p>
                 </audio>
             </div>
@@ -179,8 +185,9 @@ function initAudio(){
 function split(){
     var seconds;
     seconds = document.getElementById("splitSec").value;
-    document.getElementById("playAftSplit").display="block";
-    document.getElementById("playBefSplit").display="block";
+    document.getElementById("timesplitext").innerHTML= "Split at "+seconds+" seconds";
+    document.getElementById("playAftSplit").className= "audio-displayed";
+    document.getElementById("playBefSplit").className= "audio-displayed";
 }
 function stopABLE(){
     document.getElementById("stopRec").disabled= false;
