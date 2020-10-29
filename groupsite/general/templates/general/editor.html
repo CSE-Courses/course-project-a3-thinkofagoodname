@@ -160,7 +160,8 @@ function closeEditor(){
 function initAudio(){
 	var audio, ext, YourSongs;
 	ext = ".mp3";
-	audio = document.getElementById("YourSongs").value+ext;
+	pathToAudio = "/media/songs/"
+	audio = pathToAudio+document.getElementById("YourSongs").value+ext;
 	document.getElementById("playsrc").setAttribute("src",audio);
 }
 function split(){
