@@ -58,43 +58,12 @@ function handleWAV(blob) {
   var newRow   = tableRef.insertRow(currentEditedSoundIndex);
   newRow.className = 'soundBite';
   var audioElement = document.createElement('audio');
-  var downloadAnchor = document.createElement('a');
-  var editButton = document.createElement('button');
   
   audioElement.controls = true;
   audioElement.src = url;
 
-  downloadAnchor.href = url;
-  downloadAnchor.download = new Date().toISOString() + '.wav';
-  downloadAnchor.innerHTML = 'Download';
-  downloadAnchor.className = 'btn btn-primary';
-
-  editButton.onclick = function(e) {
-    $('.recorder.container').addClass('hide');
-    $('.editor.container').removeClass('invisible');
-
-    currentEditedSoundIndex = $(e.target).closest('tr').index();
-    
-    var f = new FileReader();
-    f.onload = function(e) {
-        audio_context.decodeAudioData(e.target.result, function(buffer) {
-          console.warn(buffer);
-          $('#audioLayerControl')[0].handleAudio(buffer);
-        }, function(e) {
-          console.warn(e);
-        });
-    };
-    f.readAsArrayBuffer(blob);
-  };
-  editButton.innerHTML = 'Edit';
-  editButton.className = 'btn btn-primary';
-
   var newCell = newRow.insertCell(-1);
   newCell.appendChild(audioElement);
-  newCell = newRow.insertCell(-1);
-  newCell.appendChild(downloadAnchor);
-  newCell = newRow.insertCell(-1);
-  newCell.appendChild(editButton);
 
   newCell = newRow.insertCell(-1);
   var toggler;
