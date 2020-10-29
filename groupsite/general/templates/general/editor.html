@@ -67,9 +67,7 @@ body {
   background-color: #454372;
   color: white;
 }
-<style>
 
-<style>
 .form-container {
   max-width: 1000px;
   padding: 10px;
@@ -81,6 +79,10 @@ body {
   position: fixed;
   border: 3px solid #f1f1f1;
   z-index: 9;
+}
+
+.audio-hidden {
+  display: none;
 }
 
 .buttonStyle {
@@ -116,18 +118,29 @@ body {
           <h1>Editor</h1>
 
           	<audio controls
-              <source id="playsrc" src= "moonlight.mp3">
-    	      </audio>
-      
-           <div>
-          <label for="Instruments" style="color:white;"> Choose which instrument you want to use:</label>
-          <select name="Instruments" id="Instruments">
-            <option value="first song">Synth 1</option>
-            <option value="second song">Synth 2</option>
-            <option value="third song">Synth 3</option>
-          </select>
-          <button type="button" class ="buttonStyle buttonStyle2" name ="KeyBinder">Bind instrument to keys</button>
-          </div>
+            <source id="playsrc" src= "moonlight.mp3"> 
+    	    </audio>
+    	    <div>
+                <label for="splitSec">Split at(seconds):</label>
+                <input type="number" name= "splitSec" id= "splitSec" min="1" max="7200">
+                <audio controls class="audio-hidden"
+                <source id="playBefSplit" src= "">
+                <p>Before splitpoint</p>
+                </audio>
+                <audio controls id="hidAud"  class="audio-hidden"
+                <source id="playAftSplit" src= "">
+                <p>After splitpoint</p>
+                </audio>
+            </div>
+            <div>
+                <label for="Instruments" style="color:white;"> Choose which instrument you want to use:</label>
+                <select name="Instruments" id="Instruments">
+                <option value="first song">Synth 1</option>
+                <option value="second song">Synth 2</option>
+                <option value="third song">Synth 3</option>
+                </select>
+                <button type="button" class ="buttonStyle buttonStyle2" name ="KeyBinder">Bind instrument to keys</button>
+            </div>
           
 
           <button type="button" name ="editorCloser" class ="buttonStyle buttonStyle1" onclick="closeEditor()">
@@ -150,6 +163,12 @@ function initAudio(){
 	pathToAudio = "/media/songs/"
 	audio = pathToAudio+document.getElementById("YourSongs").value+ext;
 	document.getElementById("playsrc").setAttribute("src",audio);
+}
+function split(){
+    var seconds;
+    seconds = document.getElementById("splitSec").value;
+    document.getElementById("playAftSplit").display="block";
+    document.getElementById("playBefSplit").display="block";
 }
 </script>
 
