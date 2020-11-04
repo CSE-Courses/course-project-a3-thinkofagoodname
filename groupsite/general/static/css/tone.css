@@ -31,7 +31,8 @@ body {
   text-align: center;
   padding: 15px;
   position: fixed;
-  bottom: 40px;
+  bottom: 200px;
+  right: 450px
 
 
 }
@@ -44,8 +45,8 @@ body {
   text-align: center;
   padding: 15px;
   position: fixed;
-  left: 500px;
-  bottom: 140px;
+  right: 50px;
+  bottom: 300px;
 }
 
 .sounds-label, .oscillator-label {
@@ -75,17 +76,49 @@ body {
   padding: 8px;
 }
 
+.keyBoard {
 
 
-
-
-.active{
-  color: #afda;
+text-align: center;
+height: fit-content;
+width: fit-content;
+display: grid;
+padding: 0px; 
+position: fixed;
+top: 680px;
+margin: 0 0 0;
+left: 1000px;
 }
 
 
+svg {
+  height: 150px;
+  width: 890px;
+  margin-top: 1px;
+}
 
 
+.whiteKey {
+  fill: #C6AC8F;
+  stroke: #C6AC8F;
+  width: 60px;
+  height: 120px;
+}
 
+.whiteKeyPos {
+  fill: #0A0908;
+  font-size: 18px;
+}
 
+.blackKey {
+  fill: #0A0908;
+  stroke: #0A0908;
+  height: 60px;
+  width: 40px;
+}
+
+.blackKeyPos {
+  fill: #C6AC8F;
+  font-size: 18px;
+}
 

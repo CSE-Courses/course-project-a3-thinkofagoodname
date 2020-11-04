@@ -80,8 +80,8 @@ body {
   position: fixed;
   border: 3px solid #f1f1f1;
   z-index: 9;
-  width: 900px;
-  height: 600px;
+  width: 1900px;
+  height: 650px;
 }
 
 .audio-hidden {
@@ -100,7 +100,7 @@ body {
 .buttonStyle1 {
 
   position: fixed;
-  left:400px ; top: 650px ;
+  left:10px ; top: 780px ;
 }
 .buttonStyle1:hover {
   background-color: blue;
@@ -129,7 +129,7 @@ body {
             </audio>
       
            <div>
-          <div class="wrapper">
+        <div class="wrapper">
           <script src="https://unpkg.com/tone@13.8.25/build/Tone.js"></script>
           <script src="{% static 'js/tone.js' %}"></script>
           <link rel="stylesheet" type="text/css" href="{% static 'css/tone.css' %}">
@@ -192,7 +192,115 @@ body {
              </section>
             </div>
           
-          
+            <div class="keyBoard">
+              <svg >
+                <g>
+                  <rect class="whiteKey C" x="0" y="0" rx="4" onclick="wKPress('.C'); determineNote(97)"/>
+                  <text class="whiteKeyPos" x="27" y="100">a</text>
+                </g>
+                <g>
+                  <rect class="whiteKey D" x="63" y="0" rx="4" onclick="wKPress('.D'); determineNote(115)"/>
+                  <text class="whiteKeyPos" x="92" y="100">s</text>
+                </g>
+                <g>
+                  <rect class="whiteKey E" x="126" y="0" rx="4" onclick="wKPress('.E'); determineNote(100)"/>
+                  <text class="whiteKeyPos" x="153" y="100">d</text>
+                </g>
+                <g>
+                  <rect class="whiteKey F" x="189" y="0" rx="4" onclick="wKPress('.F'); determineNote(102)"/>
+                  <text class="whiteKeyPos" x="218" y="100">f</text>
+                </g>
+                <g>
+                  <rect class="whiteKey G" x="252" y="0" rx="4" onclick="wKPress('.G'); determineNote(103)"/>
+                  <text class="whiteKeyPos" x="280" y="100">g</text>
+                </g>
+                <g>
+                  <rect class="whiteKey A" x="315" y="0" rx="4" onclick="wKPress('.A'); determineNote(104)"/>
+                  <text class="whiteKeyPos" x="342" y="100">h</text>
+                </g>
+                <g>
+                  <rect class="whiteKey B" x="378" y="0" rx="4" onclick="wKPress('.B'); determineNote(106)"/>
+                  <text class="whiteKeyPos" x="407" y="100">j</text>
+                </g>
+                <g>
+                  <rect class="whiteKey octave-up-C" x="441" y="0" rx="4" onclick="wKPress('.octave-up-C'); determineNote(107)"/>
+                  <text class="whiteKeyPos" x="470" y="100">k</text>
+                </g>
+                <g>
+                  <rect class="whiteKey octave-up-D" x="504" y="0" rx="4" onclick="wKPress('.octave-up-D'); determineNote(108)"/>
+                  <text class="whiteKeyPos" x="533" y="100">l</text>
+                </g>
+                <g>
+                  <rect class="whiteKey octave-up-E" x="567" y="0" rx="4" onclick="wKPress('.octave-up-E'); determineNote(59)"/>
+                  <text class="whiteKeyPos" x="595" y="100">;</text>
+                </g>
+                <g>
+                  <rect class="whiteKey octave-up-F" x="630" y="0" rx="4" onclick="wKPress('.octave-up-F'); determineNote(39)"/>
+                  <text class="whiteKeyPos" x="660" y="100">'</text>
+                </g>
+                <g>
+                  <rect class="whiteKey octave-up-A2" x="693" y="0" rx="4" onclick="wKPress('.octave-up-A2'); determineNote(99)"/>
+                  <text class="whiteKeyPos" x="725" y="100">c</text>
+                </g>
+                <g>
+                  <rect class="whiteKey octave-up-B2" x="756" y="0" rx="4" onclick="wKPress('.octave-up-B2'); determineNote(118)"/>
+                  <text class="whiteKeyPos" x="785" y="100">v</text>
+                </g>
+                <g>
+                  <rect class="whiteKey octave-up-C2" x="819" y="0" rx="4" onclick="wKPress('.octave-up-C2'); determineNote(98)"/>
+                  <text class="whiteKeyPos" x="849" y="100">b</text>
+                </g>  
+
+                <g>
+                  <rect class="blackKey C-sharp" x="42" y="0" rx="2" onclick="bKPress('.C-sharp'); determineNote(119)"/>
+                  <text class="blackKeyPos" x="56" y="50">w</text>
+                </g>
+                <g>
+                  <rect class="blackKey D-sharp" x="105" y="0" rx="2" onclick="bKPress('.D-sharp'); determineNote(101)"/>
+                  <text class="blackKeyPos" x="122" y="50">e</text>
+                </g>
+                <g>
+                  <rect class="blackKey F-sharp" x="231" y="0" rx="2" onclick="bKPress('.F-sharp'); determineNote(116)"/>
+                  <text class="blackKeyPos" x="248" y="50">t</text>
+                </g>
+                <g>
+                  <rect class="blackKey G-sharp" x="294" y="0" rx="2" onclick="bKPress('.G-sharp'); determineNote(121)"/>
+                  <text class="blackKeyPos" x="310" y="50">y</text>
+                </g>
+                <g>
+                  <rect class="blackKey A-sharp" x="357" y="0" rx="2" onclick="bKPress('.A-sharp'); determineNote(117)"/>
+                  <text class="blackKeyPos" x="374" y="50">u</text>
+                </g>
+                <g>
+                  <rect class="blackKey octave-up-C-sharp" x="483" y="0" rx="2" onclick="bKPress('.octave-up-C-sharp'); determineNote(111)"/>
+                  <text class="blackKeyPos" x="500" y="50">o</text>
+                </g>
+                <g>
+                  <rect class="blackKey octave-up-D-sharp" x="546" y="0" rx="2" onclick="bKPress('.octave-up-D-sharp'); determineNote(112)"/>
+                  <text class="blackKeyPos" x="565" y="50">p</text>
+                </g>
+                <g>
+                  <rect class="blackKey octave-up-F-sharp" x="672" y="0" rx="2" onclick="bKPress('.octave-up-F-sharp'); determineNote(110)"/>
+                  <text class="blackKeyPos" x="687" y="50">n</text>
+                </g>
+                <g>
+                  <rect class="blackKey octave-up-G-sharp" x="735" y="0" rx="2" onclick="bKPress('.octave-up-G-sharp'); determineNote(109)"/>
+                  <text class="blackKeyPos" x="750" y="50">m</text>
+                </g>
+                <g>
+                  <rect class="blackKey octave-up-A-sharp" x="795" y="0" rx="2" onclick="bKPress('.octave-up-A-sharp'); determineNote(44)"/>
+                  <text class="blackKeyPos" x="815" y="50">,</text>
+                </g>
+
+
+
+
+
+
+
+
+              </svg>
+            </div>    
           </div>
 
             <source id="playsrc" src= "moonlight.mp3"> 
@@ -288,7 +396,7 @@ function unstopABLE(){
 
 }
 </script>
-// sourced from https://github.com/daaain/JSSoundRecorder sound recording library
+ <!-- sourced from https://github.com/daaain/JSSoundRecorder sound recording library -->
 <script src= "js/lib/recorder.js"></script>
 <script src= "js/recordLive.js"> </script>
 <script src= "js/lib/recorderWorker.js"></script>
