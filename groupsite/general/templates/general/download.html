@@ -28,19 +28,60 @@
 
 </p></h1>
 <label for="Your songs" style="color:white;"> Choose one of your songs to download:</label>
-<select name="Your songs" id="Your songs">
-	<option value="first song">Edited Moonlight Sonata</option>
-	<option value="second song">Original Boppin' Hit</option>
-	<option value="third song">Fur Elise</option>
-</select>
 
+<div>
+    <select name="Your songs" id="Your songs">
+        <option value="first song">Edited Moonlight Sonata</option>
+        <option value="second song">Original Boppin' Hit</option>
+        <option value="third song">Fur Elise</option>
+        {% for project in projectList %}
+            <option value="{{ project.title }}"> {{ project.title }} </option>
+        {% endfor %}
+    </select>
 
-<button type="button" name = "mp3">
-	MP3 Download
-</button>
-<button type="button" name = "wav">
-	WAV Download
-</button>
+    <a href="/media/songs/moonlight.mp3" download>
+        <button type="button" name = "mp3">
+            MP3 Download
+        </button>
+    </a>
+
+    <button type="button" name = "wav">
+        WAV Download
+    </button>
+</div>
+
+<div id="song-table">
+    <table style="width:100%; color: green;">
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>Edited Moonlight Sonata</td>
+            <td> <a href="/media/songs/moonlight.mp3" download> <button type="button" name="mp3"> MP3 Download </button> </a> </td>
+            <td> <a href="/media/songs/moonlight.mp3" download> <button type="button" name="wav"> WAV Download </button> </a> </td>
+        </tr>
+        <tr>
+            <td>Original Boppin' Hit</td>
+            <td> <a href="/media/songs/moonlight.mp3" download> <button type="button" name="mp3"> MP3 Download </button> </a> </td>
+            <td> <a href="/media/songs/moonlight.mp3" download> <button type="button" name="wav"> WAV Download </button> </a> </td>
+        </tr>
+        <tr>
+            <td>Fur Elise</td>
+            <td> <a href="/media/songs/furelise.mp3" download> <button type="button" name="mp3"> MP3 Download </button> </a> </td>
+            <td> <a href="/media/songs/furelise.mp3" download> <button type="button" name="wav"> WAV Download </button> </a> </td>
+        </tr>
+        {% for project in projectList %}
+            <tr>
+                <td> {{project.title}} </td>
+                <td> <a href="/media/{{ project.songFile }}" download> <button type="button" name="mp3"> MP3 Download </button> </a> </td>
+                <td> <a href="/media/{{ project.songFile }}" download> <button type="button" name="wav"> WAV Download </button> </a> </td>
+            </tr>
+        {% endfor %}
+
+    </table>
+</div>
 
 <style>
 
