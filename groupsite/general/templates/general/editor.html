@@ -43,6 +43,9 @@
   <option value="moonlight">Edited Moonlight Sonata</option>
   <option value="second song">Original Boppin' Hit</option>
   <option value="furelise">Fur Elise</option>
+    {% for project in projectList %}
+        <option value="{{ project.songFile }}">{{ project.title }}</option>
+    {% endfor %}
 </select>
 
 

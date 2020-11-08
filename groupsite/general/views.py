@@ -29,4 +29,11 @@ def shared(request):
     return render(request, 'general/shared.html')
 
 def editor(request):
-    return render(request,'general/editor.html')
+
+    if (request.user.is_authenticated): # If the user is logged in, show their songs to download
+        projectList = musicProject.objects.filter(owner=request.user)
+    else: # If the user is not logged in, they do not have any extra songs
+        projectList = []
+    context = {'projectList': projectList}
+
+    return render(request,'general/editor.html', context)
