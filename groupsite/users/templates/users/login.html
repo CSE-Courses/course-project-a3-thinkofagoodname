@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Openbeats</title>
+
+    <div class="headerLinks">
+    <a href="/home">Home</a>
+    <a href="/editor">Editor</a>
+    <a href="/shared">Shared</a>
+    <a href="/sharing">Sharing</a>
+    <a href="/download">Download</a>
+    <a href="/project">Project</a>
+    </div>
+<style>
+
+body {
+  margin: 0;
+  font-family: Arial;
+}
+.headerLinks {
+  overflow: hidden;
+  background-color: #220C10;
+}
+.headerLinks a {
+  float: left;
+  color: #AAA;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 18px;
+}
+.headerLinks a:hover {
+  background-color: #5b6579;
+  color: white;
+}
+.headerLinks a.active {
+  background-color: #2f2963;
+  color: white;
+}
+
+</style>
+
+</head>
+<h1 style="background-color:#9bbec7;">Login</h1>
+
+<body style="background:radial-gradient(circle, #b0d0d3,#9bbec7);">
+    {% load crispy_forms_tags %}
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Log In</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Login</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Don't Have An Account? <a class="ml-2" href="{% url 'register' %}">Sign Up</a>
+            </small>
+        </div>
+    </div>
+</body>
+
+</html>

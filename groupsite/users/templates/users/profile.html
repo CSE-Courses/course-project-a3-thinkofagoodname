@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Openbeats</title>
+
+    <div class="headerLinks">
+    <a href="/home">Home</a>
+    <a href="/editor">Editor</a>
+    <a href="/shared">Shared</a>
+    <a href="/sharing">Sharing</a>
+    <a href="/download">Download</a>
+    <a href="/project">Project</a>
+        <div class="headerAccountLinks">
+            {% if user.is_authenticated %}
+                <a href="/logout">Logout</a>
+                <a class="active" href="/profile">Profile</a>
+            {% else %}
+                <a href="/register">Register</a>
+                <a href="/login">Login</a>
+            {% endif %}
+        </div>
+    </div>
+
+<style>
+
+body {
+  margin: 0;
+  font-family: Arial;
+}
+.headerLinks {
+  overflow: hidden;
+  background-color: #220C10;
+}
+.headerLinks a {
+  float: left;
+  color: #AAA;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 18px;
+}
+.headerLinks a:hover {
+  background-color: #5b6579;
+  color: white;
+}
+.headerLinks a.active {
+  background-color: #2f2963;
+  color: white;
+}
+
+
+.headerAccountLinks a {
+  float: right;
+  color: #AAA;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.image-cropper {
+    width:100px;
+    height:100px;
+    position:relative;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.account-img {
+    display: inline;
+    margin: 0 auto;
+    height: 100%;
+    width: auto;
+}
+
+</style>
+
+</head>
+<body style="background:radial-gradient(circle, #b0d0d3,#9bbec7);">
+<h1 style="background-color:#9bbec7;">Profile Page</h1>
+<body>
+{% load crispy_forms_tags %}
+    <div class="content-section">
+        <div class="image-cropper">
+            <img class="account-img" src="{{ user.profile.image.url }}">
+        </div>
+        <div class="media-body">
+                <h2 class="account-heading">Username: {{ user.username }}</h2>
+                <p class="text-secondary">Email: {{ user.email }}</p>
+        </div>
+    </div>
+
+    <h2> Your Projects </h2>
+    {% for project in projectList %}
+        <div>
+            <p>
+                {{project.title}} | <a href="/media/{{ project.songFile }}">Song File</a>
+            </p>
+        </div>
+    {% endfor %}
+
+</body>
+</html>
