@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Openbeats</title>
 
     <div class="headerLinks">
-    <a class="active" href="/home">Home</a>
+    <a href="/home">Home</a>
     <a href="/editor">Editor</a>
     <a href="/shared">Shared</a>
     <a href="/sharing">Sharing</a>
@@ -56,15 +56,18 @@ body {
   text-decoration: none;
   font-size: 18px;
 }
-
 </style>
 
 </head>
+<h1 style="background-color:#9bbec7;">Logout</h1>
+
 <body style="background:radial-gradient(circle, #b0d0d3,#9bbec7);">
-<h1 style="background-color:#9bbec7;">Home Page</h1>
-<body>
-
-  <h1><p style="color:white;text-align: center;">Open Beats</p></h1>
-
+    <h2> You have logged out</h2>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            <a class="ml-2" href="{% url 'login' %}">Log In Again</a>
+        </small>
+    </div>
 </body>
-</html> 
+
+</html>

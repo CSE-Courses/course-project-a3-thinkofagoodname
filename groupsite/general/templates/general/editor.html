@@ -13,6 +13,15 @@
     <a href="/sharing">Sharing</a>
     <a href="/download">Download</a>
     <a href="/project">Project</a>
+        <div class="headerAccountLinks">
+            {% if user.is_authenticated %}
+                <a href="/logout">Logout</a>
+                <a href="/profile">Profile</a>
+            {% else %}
+                <a href="/register">Register</a>
+                <a href="/login">Login</a>
+            {% endif %}
+        </div>
     </div>
 </head>
 
@@ -34,6 +43,9 @@
   <option value="moonlight">Edited Moonlight Sonata</option>
   <option value="second song">Original Boppin' Hit</option>
   <option value="furelise">Fur Elise</option>
+    {% for project in projectList %}
+        <option value="{{ project.songFile }}">{{ project.title }}</option>
+    {% endfor %}
 </select>
 
 
@@ -107,14 +119,14 @@ body {
   color: white;
 }
 
-
-
-
-
-
-
-
-
+.headerAccountLinks a {
+  float: right;
+  color: #AAA;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 18px;
+}
 
 
 </style>
