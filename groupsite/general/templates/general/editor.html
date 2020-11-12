@@ -1,11 +1,12 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <title>Openbeats</title>
-<!-- for header buttons -->
+    <!-- for header buttons -->
     <div class="headerLinks">
     <a href="/home">Home</a>
     <a class="active" href="/editor">Editor</a>
@@ -27,16 +28,16 @@
 
 <head>
 
-<title>Editor</title>
+    <title>Editor</title>
 
-<link rel=”stylesheet” href=”style.css”>
+    <link rel=”stylesheet” href=”style.css”>
 
 </head>
 <body style="background-color:black">
 
-<h1><p style="color:white;">Editor
-
-
+    <h1>
+        <p style="color:white;">
+            Editor
 </p></h1>
 <label for="YourSongs" style="color:white;"> Choose one of your songs to Edit:</label>
 <select name="YourSongs" id="YourSongs">
@@ -128,291 +129,330 @@ body {
   font-size: 18px;
 }
 
+    .audio-displayed {
+        display: block;
+    }
 
+    .buttonStyle {
+        padding: 10px 20px;
+        text-align: center;
+        cursor: pointer;
+        display: inline-block;
+    }
+
+    .buttonStyle1 {
+        position: fixed;
+        left: 10px;
+        top: 780px;
+    }
+
+        .buttonStyle1:hover {
+            background-color: blue;
+            color: white;
+        }
+
+    .headerAccountLinks a {
+        float: right;
+        color: #AAA;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 18px;
+    }
 </style>
-<div style= "text-align:center" class="form-popup" id="editor">
+<div style="text-align:center" class="form-popup" id="editor">
     <form action="/action_page.php" class="form-container">
-          <h1>Editor</h1>
+        <h1>Editor</h1>
 
 
-            <audio controls
+        <audio controls
 
               <source id="playsrc" src= "moonlight.mp3">
             </audio>
-      
-           <div>
-        <div class="wrapper">
-          <script src="https://unpkg.com/tone@13.8.25/build/Tone.js"></script>
-         
-          <link rel="stylesheet" type="text/css" href="{% static 'css/tone.css' %}">
-          <div class="layout">
 
-            <div class="sound-choice-container">
-              <label class="sounds-label">Synth</label>
-             <section class="sound-type">
-               <div class="sound-selections active" 
-                     id="Synth" 
-                     onclick="selectSynthType(id)"> 
-                 Synth
-               </div>
-                <div class="sound-selections" 
-                     id="MonoSynth" 
-                     onclick="selectSynthType(id)"> 
-                 MonoSynth
+        <div>
+            <div class="wrapper">
+                <script src="https://unpkg.com/tone@13.8.25/build/Tone.js"></script>
+
+                <link rel="stylesheet" type="text/css" href="{% static 'css/tone.css' %}">
+                <div class="layout">
+
+                    <div class="sound-choice-container">
+                        <label class="sounds-label">Synth</label>
+                        <section class="sound-type">
+                            <div class="sound-selections active"
+                                 id="Synth"
+                                 onclick="selectSynthType(id)">
+                                Synth
+                            </div>
+                            <div class="sound-selections"
+                                 id="MonoSynth"
+                                 onclick="selectSynthType(id)">
+                                MonoSynth
+                            </div>
+                            <div class="sound-selections"
+                                 id="AMSynth"
+                                 onclick="selectSynthType(id)">
+                                AMSynth
+                            </div>
+                            <div class="sound-selections"
+                                 id="FMSynth"
+                                 onclick="selectSynthType(id)">
+                                FMSynth
+                            </div>
+                            <div class="sound-selections"
+                                 id="MembraneSynth"
+                                 onclick="selectSynthType(id)">
+                                MembraneSynth
+                            </div>
+                        </section>
+                    </div>
+
+                    <div class="oscillator-choice-container">
+                        <label class="oscillator-label">Oscillator Type</label>
+                        <section class="oscillator-type">
+                            <div class="oscillator-selections active"
+                                 id="triangle"
+                                 onclick="changeOscillator(id)">
+                                Triangle
+                            </div>
+                            <div class="oscillator-selections"
+                                 id="sine"
+                                 onclick="changeOscillator(id)">
+                                Sine
+                            </div>
+                            <div class="oscillator-selections"
+                                 id="square"
+                                 onclick="changeOscillator(id)">
+                                Square
+                            </div>
+                            <div class="oscillator-selections"
+                                 id="sawtooth"
+                                 onclick="changeOscillator(id)">
+                                SawTooth
+                            </div>
+                        </section>
+                    </div>
+                    <div class="sliderContainer reverb-label">
+                        Reverb
+
+                        <input type="range" min="0.00" max="0.9" step="0.01" value="0.00" id="myRange">
+
+                    </div>
+                    <div class="keyBoard">
+                        <svg>
+                            <g>
+                                <rect class="whiteKey C" x="0" y="0" rx="4" onclick="wKPress('.C'); determineNote(97)" />
+                                <text class="whiteKeyPos" x="27" y="100">a</text>
+                            </g>
+                            <g>
+                                <rect class="whiteKey D" x="63" y="0" rx="4" onclick="wKPress('.D'); determineNote(115)" />
+                                <text class="whiteKeyPos" x="92" y="100">s</text>
+                            </g>
+                            <g>
+                                <rect class="whiteKey E" x="126" y="0" rx="4" onclick="wKPress('.E'); determineNote(100)" />
+                                <text class="whiteKeyPos" x="153" y="100">d</text>
+                            </g>
+                            <g>
+                                <rect class="whiteKey F" x="189" y="0" rx="4" onclick="wKPress('.F'); determineNote(102)" />
+                                <text class="whiteKeyPos" x="218" y="100">f</text>
+                            </g>
+                            <g>
+                                <rect class="whiteKey G" x="252" y="0" rx="4" onclick="wKPress('.G'); determineNote(103)" />
+                                <text class="whiteKeyPos" x="280" y="100">g</text>
+                            </g>
+                            <g>
+                                <rect class="whiteKey A" x="315" y="0" rx="4" onclick="wKPress('.A'); determineNote(104)" />
+                                <text class="whiteKeyPos" x="342" y="100">h</text>
+                            </g>
+                            <g>
+                                <rect class="whiteKey B" x="378" y="0" rx="4" onclick="wKPress('.B'); determineNote(106)" />
+                                <text class="whiteKeyPos" x="407" y="100">j</text>
+                            </g>
+                            <g>
+                                <rect class="whiteKey octave-up-C" x="441" y="0" rx="4" onclick="wKPress('.octave-up-C'); determineNote(107)" />
+                                <text class="whiteKeyPos" x="470" y="100">k</text>
+                            </g>
+                            <g>
+                                <rect class="whiteKey octave-up-D" x="504" y="0" rx="4" onclick="wKPress('.octave-up-D'); determineNote(108)" />
+                                <text class="whiteKeyPos" x="533" y="100">l</text>
+                            </g>
+                            <g>
+                                <rect class="whiteKey octave-up-E" x="567" y="0" rx="4" onclick="wKPress('.octave-up-E'); determineNote(59)" />
+                                <text class="whiteKeyPos" x="595" y="100">;</text>
+                            </g>
+                            <g>
+                                <rect class="whiteKey octave-up-F" x="630" y="0" rx="4" onclick="wKPress('.octave-up-F'); determineNote(39)" />
+                                <text class="whiteKeyPos" x="660" y="100">'</text>
+                            </g>
+                            <g>
+                                <rect class="whiteKey octave-up-A2" x="693" y="0" rx="4" onclick="wKPress('.octave-up-A2'); determineNote(99)" />
+                                <text class="whiteKeyPos" x="725" y="100">c</text>
+                            </g>
+                            <g>
+                                <rect class="whiteKey octave-up-B2" x="756" y="0" rx="4" onclick="wKPress('.octave-up-B2'); determineNote(118)" />
+                                <text class="whiteKeyPos" x="785" y="100">v</text>
+                            </g>
+                            <g>
+                                <rect class="whiteKey octave-up-C2" x="819" y="0" rx="4" onclick="wKPress('.octave-up-C2'); determineNote(98)" />
+                                <text class="whiteKeyPos" x="849" y="100">b</text>
+                            </g>
+
+                            <g>
+                                <rect class="blackKey C-sharp" x="42" y="0" rx="2" onclick="bKPress('.C-sharp'); determineNote(119)" />
+                                <text class="blackKeyPos" x="56" y="50">w</text>
+                            </g>
+                            <g>
+                                <rect class="blackKey D-sharp" x="105" y="0" rx="2" onclick="bKPress('.D-sharp'); determineNote(101)" />
+                                <text class="blackKeyPos" x="122" y="50">e</text>
+                            </g>
+                            <g>
+                                <rect class="blackKey F-sharp" x="231" y="0" rx="2" onclick="bKPress('.F-sharp'); determineNote(116)" />
+                                <text class="blackKeyPos" x="248" y="50">t</text>
+                            </g>
+                            <g>
+                                <rect class="blackKey G-sharp" x="294" y="0" rx="2" onclick="bKPress('.G-sharp'); determineNote(121)" />
+                                <text class="blackKeyPos" x="310" y="50">y</text>
+                            </g>
+                            <g>
+                                <rect class="blackKey A-sharp" x="357" y="0" rx="2" onclick="bKPress('.A-sharp'); determineNote(117)" />
+                                <text class="blackKeyPos" x="374" y="50">u</text>
+                            </g>
+                            <g>
+                                <rect class="blackKey octave-up-C-sharp" x="483" y="0" rx="2" onclick="bKPress('.octave-up-C-sharp'); determineNote(111)" />
+                                <text class="blackKeyPos" x="500" y="50">o</text>
+                            </g>
+                            <g>
+                                <rect class="blackKey octave-up-D-sharp" x="546" y="0" rx="2" onclick="bKPress('.octave-up-D-sharp'); determineNote(112)" />
+                                <text class="blackKeyPos" x="565" y="50">p</text>
+                            </g>
+                            <g>
+                                <rect class="blackKey octave-up-F-sharp" x="672" y="0" rx="2" onclick="bKPress('.octave-up-F-sharp'); determineNote(110)" />
+                                <text class="blackKeyPos" x="687" y="50">n</text>
+                            </g>
+                            <g>
+                                <rect class="blackKey octave-up-G-sharp" x="735" y="0" rx="2" onclick="bKPress('.octave-up-G-sharp'); determineNote(109)" />
+                                <text class="blackKeyPos" x="750" y="50">m</text>
+                            </g>
+                            <g>
+                                <rect class="blackKey octave-up-A-sharp" x="795" y="0" rx="2" onclick="bKPress('.octave-up-A-sharp'); determineNote(44)" />
+                                <text class="blackKeyPos" x="815" y="50">,</text>
+                            </g>
+
+
+
+
+
+
+
+
+                        </svg>
+                    </div>
+                    <script src="{% static 'js/tone.js' %}"></script>
                 </div>
-                <div class="sound-selections" 
-                    id="AMSynth" 
-                    onclick="selectSynthType(id)"> 
-                  AMSynth
-               </div>
-               <div class="sound-selections" 
-                    id="FMSynth" 
-                    onclick="selectSynthType(id)"> 
-                 FMSynth
-               </div>
-               <div class="sound-selections" 
-                    id="MembraneSynth" 
-                     onclick="selectSynthType(id)"> 
-                 MembraneSynth
-                </div>
-             </section>
-           </div>
 
-            <div class="oscillator-choice-container">
-             <label class="oscillator-label">Oscillator Type</label>
-              <section class="oscillator-type">
-               <div class="oscillator-selections active" 
-                    id="triangle" 
-                    onclick="changeOscillator(id)"> 
-                 Triangle
-               </div>
-               <div class="oscillator-selections" 
-                    id="sine" 
-                    onclick="changeOscillator(id)"> 
-                 Sine
-               </div>
-               <div class="oscillator-selections" 
-                     id="square" 
-                    onclick="changeOscillator(id)"> 
-                  Square
-                </div>
-               <div class="oscillator-selections" 
-                    id="sawtooth" 
-                     onclick="changeOscillator(id)"> 
-                 SawTooth
-                 </div>
-             </section>
-            </div>
-            <div class="sliderContainer reverb-label">Reverb
-              
-              <input  type="range" min="0.00" max="0.9" step ="0.01" value="0.00" id = "myRange" >
+                <source id="playsrc" src="moonlight.mp3">
+                </audio>
+                <div>
 
-            </div>
-            <div class="keyBoard">
-              <svg >
-                <g>
-                  <rect class="whiteKey C" x="0" y="0" rx="4" onclick="wKPress('.C'); determineNote(97)"/>
-                  <text class="whiteKeyPos" x="27" y="100">a</text>
-                </g>
-                <g>
-                  <rect class="whiteKey D" x="63" y="0" rx="4" onclick="wKPress('.D'); determineNote(115)"/>
-                  <text class="whiteKeyPos" x="92" y="100">s</text>
-                </g>
-                <g>
-                  <rect class="whiteKey E" x="126" y="0" rx="4" onclick="wKPress('.E'); determineNote(100)"/>
-                  <text class="whiteKeyPos" x="153" y="100">d</text>
-                </g>
-                <g>
-                  <rect class="whiteKey F" x="189" y="0" rx="4" onclick="wKPress('.F'); determineNote(102)"/>
-                  <text class="whiteKeyPos" x="218" y="100">f</text>
-                </g>
-                <g>
-                  <rect class="whiteKey G" x="252" y="0" rx="4" onclick="wKPress('.G'); determineNote(103)"/>
-                  <text class="whiteKeyPos" x="280" y="100">g</text>
-                </g>
-                <g>
-                  <rect class="whiteKey A" x="315" y="0" rx="4" onclick="wKPress('.A'); determineNote(104)"/>
-                  <text class="whiteKeyPos" x="342" y="100">h</text>
-                </g>
-                <g>
-                  <rect class="whiteKey B" x="378" y="0" rx="4" onclick="wKPress('.B'); determineNote(106)"/>
-                  <text class="whiteKeyPos" x="407" y="100">j</text>
-                </g>
-                <g>
-                  <rect class="whiteKey octave-up-C" x="441" y="0" rx="4" onclick="wKPress('.octave-up-C'); determineNote(107)"/>
-                  <text class="whiteKeyPos" x="470" y="100">k</text>
-                </g>
-                <g>
-                  <rect class="whiteKey octave-up-D" x="504" y="0" rx="4" onclick="wKPress('.octave-up-D'); determineNote(108)"/>
-                  <text class="whiteKeyPos" x="533" y="100">l</text>
-                </g>
-                <g>
-                  <rect class="whiteKey octave-up-E" x="567" y="0" rx="4" onclick="wKPress('.octave-up-E'); determineNote(59)"/>
-                  <text class="whiteKeyPos" x="595" y="100">;</text>
-                </g>
-                <g>
-                  <rect class="whiteKey octave-up-F" x="630" y="0" rx="4" onclick="wKPress('.octave-up-F'); determineNote(39)"/>
-                  <text class="whiteKeyPos" x="660" y="100">'</text>
-                </g>
-                <g>
-                  <rect class="whiteKey octave-up-A2" x="693" y="0" rx="4" onclick="wKPress('.octave-up-A2'); determineNote(99)"/>
-                  <text class="whiteKeyPos" x="725" y="100">c</text>
-                </g>
-                <g>
-                  <rect class="whiteKey octave-up-B2" x="756" y="0" rx="4" onclick="wKPress('.octave-up-B2'); determineNote(118)"/>
-                  <text class="whiteKeyPos" x="785" y="100">v</text>
-                </g>
-                <g>
-                  <rect class="whiteKey octave-up-C2" x="819" y="0" rx="4" onclick="wKPress('.octave-up-C2'); determineNote(98)"/>
-                  <text class="whiteKeyPos" x="849" y="100">b</text>
-                </g>  
+                    <audio controls
+            <source id="playsrc" src= "moonlight.mp3">>
+    	    </audio>
+                    <div>
 
-                <g>
-                  <rect class="blackKey C-sharp" x="42" y="0" rx="2" onclick="bKPress('.C-sharp'); determineNote(119)"/>
-                  <text class="blackKeyPos" x="56" y="50">w</text>
-                </g>
-                <g>
-                  <rect class="blackKey D-sharp" x="105" y="0" rx="2" onclick="bKPress('.D-sharp'); determineNote(101)"/>
-                  <text class="blackKeyPos" x="122" y="50">e</text>
-                </g>
-                <g>
-                  <rect class="blackKey F-sharp" x="231" y="0" rx="2" onclick="bKPress('.F-sharp'); determineNote(116)"/>
-                  <text class="blackKeyPos" x="248" y="50">t</text>
-                </g>
-                <g>
-                  <rect class="blackKey G-sharp" x="294" y="0" rx="2" onclick="bKPress('.G-sharp'); determineNote(121)"/>
-                  <text class="blackKeyPos" x="310" y="50">y</text>
-                </g>
-                <g>
-                  <rect class="blackKey A-sharp" x="357" y="0" rx="2" onclick="bKPress('.A-sharp'); determineNote(117)"/>
-                  <text class="blackKeyPos" x="374" y="50">u</text>
-                </g>
-                <g>
-                  <rect class="blackKey octave-up-C-sharp" x="483" y="0" rx="2" onclick="bKPress('.octave-up-C-sharp'); determineNote(111)"/>
-                  <text class="blackKeyPos" x="500" y="50">o</text>
-                </g>
-                <g>
-                  <rect class="blackKey octave-up-D-sharp" x="546" y="0" rx="2" onclick="bKPress('.octave-up-D-sharp'); determineNote(112)"/>
-                  <text class="blackKeyPos" x="565" y="50">p</text>
-                </g>
-                <g>
-                  <rect class="blackKey octave-up-F-sharp" x="672" y="0" rx="2" onclick="bKPress('.octave-up-F-sharp'); determineNote(110)"/>
-                  <text class="blackKeyPos" x="687" y="50">n</text>
-                </g>
-                <g>
-                  <rect class="blackKey octave-up-G-sharp" x="735" y="0" rx="2" onclick="bKPress('.octave-up-G-sharp'); determineNote(109)"/>
-                  <text class="blackKeyPos" x="750" y="50">m</text>
-                </g>
-                <g>
-                  <rect class="blackKey octave-up-A-sharp" x="795" y="0" rx="2" onclick="bKPress('.octave-up-A-sharp'); determineNote(44)"/>
-                  <text class="blackKeyPos" x="815" y="50">,</text>
-                </g>
+                        <label for="splitSec">Split at(seconds):</label>
+                        <input type="number" id="splitSec" min="1" max="7200">
+                        <button type="button" id="splitSub" onclick="split()">Submit</button>
+                        <p id="timesplitext"></p>
+                        <label for="playBefSplit"> Audio before split:</label>
+                        <audio controls class="audio-hidden" id="playBefSplit"
+                <source id="SBS"  src= "">
 
-
-
-
-
-
-
-
-              </svg>
-            </div>    
-            <script src="{% static 'js/tone.js' %}"></script>
-          </div>
-
-            <source id="playsrc" src= "moonlight.mp3"> 
-          </audio>
-          <div>
-
-    	    <div>
-
-                <label for="splitSec">Split at(seconds):</label>
-                <input type="number" id= "splitSec" min="1" max="7200" >
-                <button type="button" id= "splitSub" onclick= "split()">Submit</button>
-                <p id="timesplitext"></p>
-                <label for="playBefSplit"> Audio before split:</label>
-                <audio controls class="audio-hidden" id="playBefSplit"
-                <source  src= "">
                 <p>Before splitpoint</p>
                 </audio>
-                <label for="playAftSplit"> Audio after split:</label>
-                <audio controls id="playAftSplit" class="audio-hidden"
-                <source  src= "">
+                        <label for="playAftSplit"> Audio after split:</label>
+                        <audio controls id="playAftSplit" class="audio-hidden"
+                <source id="SAS"  src= "">
                 <p>After splitpoint</p>
                 </audio>
-            </div>
-            <div>
-                <button id="startRec" type= "button" onclick= "startRecording(this);" onclick= "stopABLE()">
-                Record from microphone
-                </button>
-                <button id="stopRec"  type= "button" onclick= "stopRecording(this);" onclick="unstopABLE()" disabled= true>
-                Stop recording
-                </button>
-                <table id="recordingslist">
 
-                </table>
-                
-            </div>
+                    </div>
+                    <div>
+                        <button id="startRec" type="button" onclick="startRecording(this);" onclick="stopABLE()">
+                            Record from microphone
+                        </button>
+                        <button id="stopRec" type="button" onclick="stopRecording(this);" onclick="unstopABLE()" disabled=true>
+                            Stop recording
+                        </button>
+                        <table id="recordingslist">
+                        </table>
 
-          
+                    </div>
 
-          <button type="button" name ="editorCloser" class ="buttonStyle buttonStyle1" onclick="closeEditor()">
-              Close Editor
-          </button>
-      </form>
+
+
+                    <button type="button" name="editorCloser" class="buttonStyle buttonStyle1" onclick="closeEditor()">
+                        Close Editor
+                    </button>
+    </form>
+
 </div>
 
 <script>
-function openEditor(){
-    document.getElementById("editor").style.display="block";
-    document.getElementById("YourSongs").addEventListener("change",initAudio)
+    function openEditor() {
+        document.getElementById("editor").style.display = "block";
+        document.getElementById("YourSongs").addEventListener("change", initAudio)
     }
-function closeEditor(){
-     document.getElementById("editor").style.display="none";
+    function closeEditor() {
+        document.getElementById("editor").style.display = "none";
     }
-function initAudio(){
-  var audio, ext, YourSongs;
-  ext = ".mp3";
-  pathToAudio = "/media/songs/"
-  audio = pathToAudio+document.getElementById("YourSongs").value+ext;
-  document.getElementById("playsrc").setAttribute("src",audio);
-}
-function split(){
-    var seconds;
-    seconds = document.getElementById("splitSec").value;
-    document.getElementById("timesplitext").innerHTML= "Split at "+seconds+" seconds";
-    document.getElementById("playAftSplit").className= "audio-displayed";
-    document.getElementById("playBefSplit").className= "audio-displayed";
-}
-function stopABLE(){
-    document.getElementById("stopRec").disabled= false;
-    document.getElementById("startRec").disabled= true;
-}
-function unstopABLE(){
-    document.getElementById("stopRec").disabled= true;
-    document.getElementById("startRec").disabled= false;
+    function initAudio() {
+        var audio, ext, YourSongs;
+        ext = ".mp3";
+        pathToAudio = "/media/songs/"
+        audio = pathToAudio + document.getElementById("YourSongs").value + ext;
+        document.getElementById("playsrc").setAttribute("src", audio);
+    }
+    function split() {
+        var seconds, SongSrc;
+        seconds = document.getElementById("splitSec").value;
+        document.getElementById("timesplitext").innerHTML = "Split at " + seconds + " seconds";
+        SongSrc = "/media/songs/" + document.getElementById("YourSongs").value + ".mp3";
+      <!--
+        const ffmpeg = require("js/ffmpeg.js/ffmpeg-mp4.js");
+        ffmpeg({
+            arguments: ["-ss", seconds, "-i", SongSrc, "-acodec", "copy", "first.mp3",],
+            stdin: {},
+            print: {},
+            printErr: {},
+            onExit: {},
 
-}
-function split(){
-    var seconds;
-    seconds = document.getElementById("splitSec").value;
-    document.getElementById("timesplitext").innerHTML= "Split at "+seconds+" seconds";
-    document.getElementById("playAftSplit").className= "audio-displayed";
-    document.getElementById("playBefSplit").className= "audio-displayed";
-}
-function stopABLE(){
-    document.getElementById("stopRec").disabled= false;
-    document.getElementById("startRec").disabled= true;
-}
-function unstopABLE(){
-    document.getElementById("stopRec").disabled= true;
-    document.getElementById("startRec").disabled= false;
+        });
+        ffmpeg({
+            arguments: ["-t", seconds, "-i", SongSrc, "-acodec", "copy", "second.mp3",],
+            stdin: {},
+            print: {},
+            printErr: {},
+            onExit: {},
+        });
+        document.getElementById("SBS").setAttribute("src", "first.mp3");
+        document.getElementById("SAS").setAttribute("src", "second.mp3");-->
+        document.getElementById("playAftSplit").className = "audio-displayed";
+        document.getElementById("playBefSplit").className = "audio-displayed";
+    }
+    function stopABLE() {
+        document.getElementById("stopRec").disabled = false;
+        document.getElementById("startRec").disabled = true;
+    }
+    function unstopABLE() {
+        document.getElementById("stopRec").disabled = true;
+        document.getElementById("startRec").disabled = false;
 
-}
+    }
 </script>
- <!-- sourced from https://github.com/daaain/JSSoundRecorder sound recording library -->
-<script src= "js/lib/recorder.js"></script>
-<script src= "js/recordLive.js"> </script>
-<script src= "js/lib/recorderWorker.js"></script>
+<!-- sourced from https://github.com/daaain/JSSoundRecorder sound recording library -->
+<script src="js/lib/recorder.js"></script>
+<script src="js/recordLive.js"></script>
+<script src="js/lib/recorderWorker.js"></script>
 
 </html>
