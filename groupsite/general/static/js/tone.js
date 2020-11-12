@@ -3,10 +3,12 @@ let
     synthType = "new Tone.Synth().toMaster()",
     soundSelected = "Synth",
     oscillatorType = "triangle",
-    effectsAddedList = [],
+    
     synth = new Tone.Synth().toMaster(),
+    reverbEffect = new Tone.JCReverb(0.4).connect(Tone.Master),
     frequency = synth.frequency.value;
-
+reverbEffect.wet.value = 0.0;
+//reverbEffect.roomSize.value = 0.9;
 document.onkeypress = (e) => {
   e = e || window.event;
   let charCode = e.keyCode;
@@ -165,33 +167,41 @@ const bKPress = (selector) => {
 }
 
 const selectSynthSound = () => {
-  let effects = effectsAddedList.toString();
+  
 
   switch(soundSelected) {
     case "Synth":
-      synthType =  "new Tone.Synth().toMaster()";
-      synth = eval(synthType);
+      
+      synth = new Tone.Synth().chain(reverbEffect).toMaster();
       break;
     case "MonoSynth":
-      synthType =  "new Tone.MonoSynth().toMaster()";
-      synth = eval(synthType);
+      
+      synth = new Tone.MonoSynth().chain(reverbEffect).toMaster();
       break;
     case "AMSynth":
-      synthType =  "new Tone.AMSynth().toMaster()";
-      synth = eval(synthType);
+      
+      synth = new Tone.AMSynth().chain(reverbEffect).toMaster();
       break;
     case "FMSynth":
-      synthType =  "new Tone.FMSynth().toMaster()";
-      synth = eval(synthType);
+      
+      synth = new Tone.FMSynth().chain(reverbEffect).toMaster();
       break;
     case "MembraneSynth":
-      synthType =  "new Tone.MembraneSynth().toMaster()";
-      synth = eval(synthType);
+      
+      synth = new Tone.MembraneSynth().chain(reverbEffect).toMaster();
       break;
     default:
       synth = new Tone.Synth().toMaster();
   }
   synth.oscillator.type = oscillatorType;
 }
-
+let slider = document.getElementById("myRange");
+slider.oninput = () => {
+    reverbEffect.roomSize.value = slider.value;
+    if(slider.value == 0.00){
+      reverbEffect.wet.value = 0;
+    }else{
+      reverbEffect.wet.value = 0.4
+    }
+  }
 

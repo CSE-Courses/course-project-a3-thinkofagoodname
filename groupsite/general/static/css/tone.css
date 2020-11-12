@@ -8,7 +8,17 @@ body {
   grid-template-columns: 1fr;
 }
 
+.sliderContainer {
+  height: 80px;
+  width: 140px;
+  background: gray;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 110px;
+  right: 950px
 
+}
 
 .layout {
   display: grid;
@@ -31,7 +41,7 @@ body {
   text-align: center;
   padding: 15px;
   position: fixed;
-  bottom: 200px;
+  bottom: 160px;
   right: 450px
 
 
@@ -46,10 +56,10 @@ body {
   padding: 15px;
   position: fixed;
   right: 50px;
-  bottom: 300px;
+  bottom: 260px;
 }
 
-.sounds-label, .oscillator-label {
+.sounds-label, .reverb-label, .oscillator-label {
   color: #0A0908;
   font-size: 22px;
   font-weight: 300;
