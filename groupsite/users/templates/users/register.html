@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Openbeats</title>
 
     <div class="headerLinks">
-    <a class="active" href="/home">Home</a>
+    <a href="/home">Home</a>
     <a href="/editor">Editor</a>
     <a href="/shared">Shared</a>
     <a href="/sharing">Sharing</a>
@@ -16,7 +16,7 @@
                 <a href="/logout">Logout</a>
                 <a href="/profile">Profile</a>
             {% else %}
-                <a href="/register">Register</a>
+                <a class="active" href="/register">Register</a>
                 <a href="/login">Login</a>
             {% endif %}
         </div>
@@ -56,15 +56,30 @@ body {
   text-decoration: none;
   font-size: 18px;
 }
-
 </style>
 
 </head>
+<h1 style="background-color:#9bbec7;">Register</h1>
+
 <body style="background:radial-gradient(circle, #b0d0d3,#9bbec7);">
-<h1 style="background-color:#9bbec7;">Home Page</h1>
-<body>
-
-  <h1><p style="color:white;text-align: center;">Open Beats</p></h1>
-
+    {% load crispy_forms_tags %}
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Join Today</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Sign Up</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Already Have An Account? <a class="ml-2" href="{% url 'login' %}">Sign In</a>
+            </small>
+        </div>
+    </div>
 </body>
-</html> 
+
+</html>

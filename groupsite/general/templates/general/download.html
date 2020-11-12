@@ -11,6 +11,15 @@
     <a href="/sharing">Sharing</a>
     <a class="active" href="/download">Download</a>
     <a href="/project">Project</a>
+        <div class="headerAccountLinks">
+            {% if user.is_authenticated %}
+                <a href="/logout">Logout</a>
+                <a href="/profile">Profile</a>
+            {% else %}
+                <a href="/register">Register</a>
+                <a href="/login">Login</a>
+            {% endif %}
+        </div>
     </div>
 </head>
 
@@ -27,20 +36,40 @@
 
 
 </p></h1>
-<label for="Your songs" style="color:white;"> Choose one of your songs to download:</label>
-<select name="Your songs" id="Your songs">
-	<option value="first song">Edited Moonlight Sonata</option>
-	<option value="second song">Original Boppin' Hit</option>
-	<option value="third song">Fur Elise</option>
-</select>
+<label style="color:white;"> Choose one of your songs to download:</label>
 
+<div id="song-table">
+    <table style="width:33%; color: green;">
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>Edited Moonlight Sonata</td>
+            <td style="float: right;"> <a href="/media/songs/moonlight.mp3" download> <button type="button" name="mp3"> MP3 Download </button> </a> </td>
+            <td> <a href="/media/songs/moonlight.mp3" download> <button type="button" name="wav"> WAV Download </button> </a> </td>
+        </tr>
+        <tr>
+            <td>Original Boppin' Hit</td>
+            <td style="float: right;"> <a href="/media/songs/moonlight.mp3" download> <button type="button" name="mp3"> MP3 Download </button> </a> </td>
+            <td> <a href="/media/songs/moonlight.mp3" download> <button type="button" name="wav"> WAV Download </button> </a> </td>
+        </tr>
+        <tr>
+            <td>Fur Elise</td>
+            <td style="float: right;"> <a href="/media/songs/furelise.mp3" download> <button type="button" name="mp3"> MP3 Download </button> </a> </td>
+            <td> <a href="/media/songs/furelise.mp3" download> <button type="button" name="wav"> WAV Download </button> </a> </td>
+        </tr>
+        {% for project in projectList %}
+            <tr>
+                <td> {{project.title}} </td>
+                <td style="float: right;"> <a href="/media/{{ project.songFile }}" download> <button type="button" name="mp3"> MP3 Download </button> </a> </td>
+                <td> <a href="/media/{{ project.songFile }}" download> <button type="button" name="wav"> WAV Download </button> </a> </td>
+            </tr>
+        {% endfor %}
 
-<button type="button" name = "mp3">
-	MP3 Download
-</button>
-<button type="button" name = "wav">
-	WAV Download
-</button>
+    </table>
+</div>
 
 <style>
 
@@ -67,6 +96,14 @@ body {
 .headerLinks a.active {
   background-color: #c4a77d;
   color: white;
+}
+.headerAccountLinks a {
+  float: right;
+  color: #AAA;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 18px;
 }
  
 </style>

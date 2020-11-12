@@ -1,0 +1,134 @@
+body {
+  background: #545F62;
+  font-family: 'Rationale', sans-serif;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.sliderContainer {
+  height: 80px;
+  width: 140px;
+  background: gray;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 110px;
+  right: 950px
+
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax();
+  width: 90%;
+  padding: 2px;
+  margin: 0 0 0;
+}
+.active{
+  color: #afda;
+}
+.sound-selections:hover, .oscillator-selections:hover {
+  color: #afda;
+}
+.sound-choice-container{
+  height: 50px;
+  width: 430px;
+  background: gray;
+  margin: 0 0 100px ;
+  text-align: center;
+  padding: 15px;
+  position: fixed;
+  bottom: 160px;
+  right: 450px
+
+
+}
+
+.oscillator-choice-container{
+  height: 50px;
+  width: 360px;
+  background: gray;
+  margin: 0 0 0;
+  text-align: center;
+  padding: 15px;
+  position: fixed;
+  right: 50px;
+  bottom: 260px;
+}
+
+.sounds-label, .reverb-label, .oscillator-label {
+  color: #0A0908;
+  font-size: 22px;
+  font-weight: 300;
+  margin: 0 0 0;
+}
+
+.sound-type {
+  color: white;
+  text-align: left;
+  display: flex;
+  margin-top: 5px;
+}
+.oscillator-type {
+  color: white;
+  text-align: left;
+  display: flex;
+  margin-top: 5px;
+
+}
+
+.sound-selections, .oscillator-selections {
+  margin: auto;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.keyBoard {
+
+
+text-align: center;
+height: fit-content;
+width: fit-content;
+display: grid;
+padding: 0px; 
+position: fixed;
+top: 680px;
+margin: 0 0 0;
+left: 1000px;
+}
+
+
+svg {
+  height: 150px;
+  width: 890px;
+  margin-top: 1px;
+}
+
+
+.whiteKey {
+  fill: #C6AC8F;
+  stroke: #C6AC8F;
+  width: 60px;
+  height: 120px;
+}
+
+.whiteKeyPos {
+  fill: #0A0908;
+  font-size: 18px;
+}
+
+.blackKey {
+  fill: #0A0908;
+  stroke: #0A0908;
+  height: 60px;
+  width: 40px;
+}
+
+.blackKeyPos {
+  fill: #C6AC8F;
+  font-size: 18px;
+}
+
