@@ -60,6 +60,13 @@ body {
 
 </head>
 <h1 style="background-color:#9bbec7;">Login</h1>
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
 
 <body style="background:radial-gradient(circle, #b0d0d3,#9bbec7);">
     {% load crispy_forms_tags %}
