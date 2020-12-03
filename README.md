@@ -1,4 +1,4 @@
-# course-project-a3-thinkofagoodname
+# OpenBeats
 
 Openbeats is a project that is dedicated to giving users an online interface to collaborate with other musicians and artists to create and edit music. 
 
