@@ -16,3 +16,11 @@ class musicProject(models.Model):
 
     def get_absolute_url(self):
         return '/profile/' # Will send the user to this url after the creation of a new musical project
+
+class recording(models.Model):
+    title = models.CharField(max_length=100)
+    audioFile = models.FileField(upload_to='recordings/')
+    project_name = models.ForeignKey(musicProject, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title
