@@ -1,90 +1,8 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<script>
-    function openEditor() {
-        document.getElementById("editor").style.display = "block";
-        document.getElementById("YourSongs").addEventListener("change", initAudio)
-    }
-    function closeEditor() {
-        document.getElementById("editor").style.display = "none";
-    }
-    function initAudio() {
-        var audio, ext, YourSongs;
-        ext = ".mp3";
-        audio = document.getElementById("YourSongs").value + ext;
-        document.getElementById("playsrc").setAttribute("src", audio);
-    }
-    function stopABLE() {
-        document.getElementById("stopRec").disabled = false;
-        document.getElementById("startRec").disabled = true;
-    }
-    function unstopABLE() {
-        document.getElementById("stopRec").disabled = true;
-        document.getElementById("startRec").disabled = false;
-    }
-    var curPlay;
-	function fastTone(){
-	var audio, ext, YourSongs;
-    ext = ".mp3";
-    audio = document.getElementById("YourSongs").value + ext;
-	var audi = new Tone.Player(audio);
-	curPlay = audi;
-	audi.autostart= true;
-		var pitchUp= new Tone.PitchShift({
-		pitch: 12
-	}).toMaster();
-	audi.connect(pitchUp);
-	
-	window.play = function() {
-		Tone.Transport.start();
-	}
-	}
-	function slowTone(){
-	var audio, ext, YourSongs;
-    ext = ".mp3";
-    audio = document.getElementById("YourSongs").value + ext;
-	var audi = new Tone.Player(audio);
-	curPlay = audi;
-	audi.autostart= true;
-		var pitchDown= new Tone.PitchShift({
-		pitch: -12
-	}).toMaster();
-	audi.connect(pitchDown);
-	
-	window.play = function() {
-		Tone.Transport.start();
-	}
-	}
-	function stopPlayer(){
-    	curPlay.stop();
-	}
-</script>
-<!--<script>
-    function split() {
-        var seconds, SongSrc;
-        seconds = document.getElementById("splitSec").value;
-        document.getElementById("timesplitext").innerHTML = "Split at " + seconds + " seconds";
-        SongSrc = document.getElementById("YourSongs").value + ".mp3";
-        const { createFFmpeg } = FFmpeg;
-        const { createFFmpeg } = FFmpeg2;
-        FFmpeg({
-            arguments: ["-ss", seconds, "-i", SongSrc, "-acodec", "copy", "first.mp3",],
-        });
-        FFmpeg2({
-            arguments: ["-t", seconds, "-i", SongSrc, "-acodec", "copy", "second.mp3",],
-        });
-        document.getElementById("SBS").setAttribute("src", "first.mp3");
-        document.getElementById("SAS").setAttribute("src", "second.mp3");
-        document.getElementById("playAftSplit").className = "audio-displayed";
-        document.getElementById("playBefSplit").className = "audio-displayed";
-    }
-</script>-->
-<!-- sourced from https://github.com/daaain/JSSoundRecorder sound recording library -->
-<script src="https://unpkg.com/@ffmpeg/ffmpeg@0.9.5/dist/ffmpeg.min.js"></script>
-<script src="js/lib/recorder.js"></script>
-<script src="js/recordLive.js"></script>
-<script src="js/lib/recorderWorker.js"></script>
+
+
 <!-- for header buttons -->
 <style>
     body {
@@ -449,6 +367,100 @@
                 </button>
     </form>
 </div>
+<script>
+    function openEditor() {
+        document.getElementById("editor").style.display = "block";
+        document.getElementById("YourSongs").addEventListener("change", initAudio)
+    }
+    function closeEditor() {
+        document.getElementById("editor").style.display = "none";
+    }
+    function initAudio() {
+        var audio, ext, YourSongs;
+        ext = ".mp3";
+        audio = document.getElementById("YourSongs").value;
+        if (audio === "moonlight") {
+            audio = "/media/songs/moonlight" + ext;
+        }
+        else if (audio === "furelise") {
+            audio = "/media/songs/furelise" + ext;
+        }
+        else {
+            audio = "/media/" + document.getElementById("YourSongs").value;
+        }
+
+        document.getElementById("playsrc").setAttribute("src", audio);
+    }
+    function stopABLE() {
+        document.getElementById("stopRec").disabled = false;
+        document.getElementById("startRec").disabled = true;
+    }
+    function unstopABLE() {
+        document.getElementById("stopRec").disabled = true;
+        document.getElementById("startRec").disabled = false;
+    }
+    var curPlay;
+	function fastTone(){
+	var audio, ext, YourSongs;
+    ext = ".mp3";
+    audio = document.getElementById("YourSongs").value + ext;
+	var audi = new Tone.Player(audio);
+	curPlay = audi;
+	audi.autostart= true;
+		var pitchUp= new Tone.PitchShift({
+		pitch: 12
+	}).toMaster();
+	audi.connect(pitchUp);
+
+	window.play = function() {
+		Tone.Transport.start();
+	}
+	}
+	function slowTone(){
+	var audio, ext, YourSongs;
+    ext = ".mp3";
+    audio = document.getElementById("YourSongs").value + ext;
+	var audi = new Tone.Player(audio);
+	curPlay = audi;
+	audi.autostart= true;
+		var pitchDown= new Tone.PitchShift({
+		pitch: -12
+	}).toMaster();
+	audi.connect(pitchDown);
+
+	window.play = function() {
+		Tone.Transport.start();
+	}
+	}
+	function stopPlayer(){
+    	curPlay.stop();
+	}
+</script>
+<!--<script>
+    function split() {
+        var seconds, SongSrc;
+        seconds = document.getElementById("splitSec").value;
+        document.getElementById("timesplitext").innerHTML = "Split at " + seconds + " seconds";
+        SongSrc = document.getElementById("YourSongs").value + ".mp3";
+        const { createFFmpeg } = FFmpeg;
+        const { createFFmpeg } = FFmpeg2;
+        FFmpeg({
+            arguments: ["-ss", seconds, "-i", SongSrc, "-acodec", "copy", "first.mp3",],
+        });
+        FFmpeg2({
+            arguments: ["-t", seconds, "-i", SongSrc, "-acodec", "copy", "second.mp3",],
+        });
+        document.getElementById("SBS").setAttribute("src", "first.mp3");
+        document.getElementById("SAS").setAttribute("src", "second.mp3");
+        document.getElementById("playAftSplit").className = "audio-displayed";
+        document.getElementById("playBefSplit").className = "audio-displayed";
+    }
+</script>-->
+<!-- sourced from https://github.com/daaain/JSSoundRecorder sound recording library -->
+<script src="https://unpkg.com/@ffmpeg/ffmpeg@0.9.5/dist/ffmpeg.min.js"></script>
+<script src="js/lib/recorder.js"></script>
+<script src="js/recordLive.js"></script>
+<script src="js/lib/recorderWorker.js"></script>
 </body>
 
 </html>
