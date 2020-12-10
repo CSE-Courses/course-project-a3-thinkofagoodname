@@ -2,6 +2,7 @@ from django.urls import path
 
 from . import views
 from .views import musicProjectCreateView
+from .views import save_recording
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -12,5 +13,6 @@ urlpatterns = [
     path('editor/', views.editor, name='editor'),
     path('home/', views.home, name='home'),
     path('project/create/', musicProjectCreateView.as_view(), name='musicProject-create'),
+    path('editor/save_recording/', save_recording)
 ]
 
