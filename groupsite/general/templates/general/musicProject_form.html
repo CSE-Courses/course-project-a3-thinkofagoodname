@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Openbeats</title>
+
+    <div class="headerLinks">
+    <a href="/home">Home</a>
+    <a href="/editor">Editor</a>
+    <a href="/shared">Shared</a>
+    <a href="/sharing">Sharing</a>
+    <a href="/download">Download</a>
+    <a href="/project">Project</a>
+        <div class="headerAccountLinks">
+            {% if user.is_authenticated %}
+                <a href="/logout">Logout</a>
+                <a href="/profile">Profile</a>
+            {% else %}
+                <a href="/register">Register</a>
+                <a href="/login">Login</a>
+            {% endif %}
+        </div>
+    </div>
+<style>
+
+body {
+  margin: 0;
+  font-family: Arial;
+}
+.headerLinks {
+  overflow: hidden;
+  background-color: #220C10;
+}
+.headerLinks a {
+  float: left;
+  color: #AAA;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 18px;
+}
+.headerLinks a:hover {
+  background-color: #5b6579;
+  color: white;
+}
+.headerLinks a.active {
+  background-color: #2f2963;
+  color: white;
+}
+
+.headerAccountLinks a {
+  float: right;
+  color: #AAA;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 18px;
+}
+</style>
+
+</head>
+<h1 style="background-color:#9bbec7;">Create a Project</h1>
+
+<body style="background:radial-gradient(circle, #b0d0d3,#9bbec7);">
+    {% load crispy_forms_tags %}
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Create a New Project</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Create</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

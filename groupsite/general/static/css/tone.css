@@ -4,8 +4,9 @@ body {
 }
 
 .wrapper {
-  display: grid;
+  display: none;
   grid-template-columns: 1fr;
+  position: absolute;
 }
 
 .sliderContainer {
@@ -14,18 +15,19 @@ body {
   background: gray;
   text-align: center;
   padding: 10px;
-  position: fixed;
+  position: absolute;
   bottom: 110px;
   right: 950px
 
 }
 
 .layout {
-  display: grid;
+  display: none;
   grid-template-columns: minmax();
   width: 90%;
   padding: 2px;
   margin: 0 0 0;
+  position: absolute;
 }
 .active{
   color: #afda;
@@ -40,7 +42,7 @@ body {
   margin: 0 0 100px ;
   text-align: center;
   padding: 15px;
-  position: fixed;
+  position: absolute;
   bottom: 160px;
   right: 450px
 
@@ -54,7 +56,7 @@ body {
   margin: 0 0 0;
   text-align: center;
   padding: 15px;
-  position: fixed;
+  position: absolute;
   right: 50px;
   bottom: 260px;
 }
@@ -94,7 +96,7 @@ height: fit-content;
 width: fit-content;
 display: grid;
 padding: 0px; 
-position: fixed;
+position: absolute;
 top: 680px;
 margin: 0 0 0;
 left: 1000px;

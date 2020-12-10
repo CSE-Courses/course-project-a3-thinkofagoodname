@@ -8,19 +8,19 @@
     <title>Openbeats</title>
     <!-- for header buttons -->
     <div class="headerLinks">
-    <a href="/home">Home</a>
-    <a class="active" href="/editor">Editor</a>
-    <a href="/shared">Shared</a>
-    <a href="/sharing">Sharing</a>
-    <a href="/download">Download</a>
-    <a href="/project">Project</a>
+        <a href="/home">Home</a>
+    <a class="active" href="/editor"><span title="Edit your songs">Editor</span></a>
+    <a href="/shared"><span title="View shared work">Shared</span></a>
+    <a href="/sharing"><span title="Share your work">Sharing</span></a>
+    <a href="/download"><span title="Download your songs">Download</span></a>
+    <a href="/project"><span title="About Us">Project</span></a>
         <div class="headerAccountLinks">
             {% if user.is_authenticated %}
-                <a href="/logout">Logout</a>
-                <a href="/profile">Profile</a>
+            <a href="/logout">Logout</a>
+            <a href="/profile">Profile</a>
             {% else %}
-                <a href="/register">Register</a>
-                <a href="/login">Login</a>
+            <a href="/register">Register</a>
+            <a href="/login">Login</a>
             {% endif %}
         </div>
     </div>
@@ -35,66 +35,71 @@
 </head>
 <body style="background-color:black">
 
-    <h1>
-        <p style="color:white;">
-            Editor
-</p></h1>
+<h1>
+    <p style="color:white;">
+        Editor
+    </p></h1>
 <label for="YourSongs" style="color:white;"> Choose one of your songs to Edit:</label>
 <select name="YourSongs" id="YourSongs">
-  <option value="moonlight">Edited Moonlight Sonata</option>
-  <option value="second song">Original Boppin' Hit</option>
-  <option value="furelise">Fur Elise</option>
+    <option value="moonlight">Edited Moonlight Sonata</option>
+    <option value="second song">Original Boppin' Hit</option>
+    <option value="furelise">Fur Elise</option>
     {% for project in projectList %}
-        <option value="{{ project.songFile }}">{{ project.title }}</option>
+    <option value="{{ project.songFile }}">{{ project.title }}</option>
     {% endfor %}
 </select>
 
 
-<button type="button" onclick="openEditor()" name = "editorOpener">
-  OPEN Editor
+<button type="button" onclick="openEditor()" name="editorOpener">
+    OPEN Editor
 </button>
 
 </body>
 <!-- for header buttons -->
 <style>
-body {
-  margin: 0;
-  font-family: Arial;
-}
-.headerLinks {
-  overflow: hidden;
-  background-color: #220C10;
-}
-.headerLinks a {
-  float: left;
-  color: #AAA;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 18px;
-}
-.headerLinks a:hover {
-  background-color: #5b6579;
-  color: white;
-}
-.headerLinks a.active {
-  background-color: #454372;
-  color: white;
-}
+    body {
+        margin: 0;
+        font-family: Arial;
+    }
+
+    .headerLinks {
+        overflow: hidden;
+        background-color: #220C10;
+    }
+
+    .headerLinks a {
+        float: left;
+        color: #AAA;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 18px;
+    }
+
+    .headerLinks a:hover {
+        background-color: #5b6579;
+        color: white;
+    }
+
+    .headerLinks a.active {
+        background-color: #454372;
+        color: white;
+    }
 
 .form-container {
-  max-width: 1000px;
+  max-width: 98%;
   padding: 10px;
   background-color: black;
   color:white;
+    position: absolute;
 }
 .form-popup {
   display: none;
-  position: fixed;
+  position: absolute;
   border: 3px solid #f1f1f1;
   z-index: 9;
-  width: 1900px;
-  height: 650px;
+  width: 99%;
+  height: 70%;
 }
 
 .audio-hidden {
@@ -110,40 +115,10 @@ body {
   display: inline-block;
 }
 
-.buttonStyle1 {
-
-  position: fixed;
-  left:10px ; top: 780px ;
-}
-.buttonStyle1:hover {
-  background-color: blue;
-  color: white;
-}
-
-.headerAccountLinks a {
-  float: right;
-  color: #AAA;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 18px;
-}
-
-    .audio-displayed {
-        display: block;
-    }
-
-    .buttonStyle {
-        padding: 10px 20px;
-        text-align: center;
-        cursor: pointer;
-        display: inline-block;
-    }
-
     .buttonStyle1 {
         position: fixed;
-        left: 10px;
-        top: 780px;
+        right: 30px;
+        top: 790px;
     }
 
         .buttonStyle1:hover {
@@ -159,10 +134,17 @@ body {
         text-decoration: none;
         font-size: 18px;
     }
+
 </style>
 <div style="text-align:center" class="form-popup" id="editor">
     <form action="/action_page.php" class="form-container">
-        <h1>Editor</h1>
+        <h1> Editor
+            <button type="button" id="recordButton" hidden="hidden">Record</button>
+            <button type="button" id="mic">Set Microphone</button>
+            <ul id="recordings"></ul>
+        </h1>
+        <p><textarea name="text" cols="100" rows="1" >adjustable temp notes</textarea></p>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 
         <audio controls
@@ -171,11 +153,16 @@ body {
             </audio>
 
         <div>
+            <p></p>
+			<button id="high" type="button" onclick="fastTone()">High pitch</button>
+			<button id="low" type="button" onclick="slowTone()">Low pitch</button>
+			<button id="playStopper" type="button" onclick="stopPlayer()">Stop</button>
+            <p></p>
             <div class="wrapper">
                 <script src="https://unpkg.com/tone@13.8.25/build/Tone.js"></script>
 
                 <link rel="stylesheet" type="text/css" href="{% static 'css/tone.css' %}">
-                <div class="layout">
+                <div class="layout" id="layout">
 
                     <div class="sound-choice-container">
                         <label class="sounds-label">Synth</label>
@@ -356,8 +343,9 @@ body {
                 <div>
 
                     <audio controls
-            <source id="playsrc" src= "moonlight.mp3">>
-    	    </audio>
+                    <source id="playsrc" src="moonlight.mp3">
+                    >
+                    </audio>
                     <div>
 
                         <label for="splitSec">Split at(seconds):</label>
@@ -366,22 +354,23 @@ body {
                         <p id="timesplitext"></p>
                         <label for="playBefSplit"> Audio before split:</label>
                         <audio controls class="audio-hidden" id="playBefSplit"
-                <source id="SBS"  src= "">
+                        <source id="SBS" src="">
 
-                <p>Before splitpoint</p>
-                </audio>
+                        <p>Before splitpoint</p>
+                        </audio>
                         <label for="playAftSplit"> Audio after split:</label>
                         <audio controls id="playAftSplit" class="audio-hidden"
-                <source id="SAS"  src= "">
-                <p>After splitpoint</p>
-                </audio>
+                        <source id="SAS" src="">
+                        <p>After splitpoint</p>
+                        </audio>
 
                     </div>
                     <div>
                         <button id="startRec" type="button" onclick="startRecording(this);" onclick="stopABLE()">
                             Record from microphone
                         </button>
-                        <button id="stopRec" type="button" onclick="stopRecording(this);" onclick="unstopABLE()" disabled=true>
+                        <button id="stopRec" type="button" onclick="stopRecording(this);" onclick="unstopABLE()"
+                                disabled=true>
                             Stop recording
                         </button>
                         <table id="recordingslist">
@@ -398,48 +387,179 @@ body {
 
 </div>
 
+<!--Tutorial for saving audio through web browser Source: https://www.twilio.com/blog/mediastream-recording-api -->
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const getMic = document.getElementById('mic');
+        const recordButton = document.getElementById('recordButton');
+        const list = document.getElementById('recordings');
+        if ('MediaRecorder' in window) {
+            getMic.addEventListener('click', async () => {
+                getMic.setAttribute('hidden', 'hidden');
+                try {
+                    const stream = await navigator.mediaDevices.getUserMedia({
+                        audio: true,
+                        video: false
+                    });
+                    const mimeType = 'audio/webm';
+                    let chunks = [];
+                    const recorder = new MediaRecorder(stream, {type: mimeType});
+                    recorder.addEventListener('dataavailable', event => {
+                        if (typeof event.data === 'undefined') return;
+                        if (event.data.size === 0) return;
+                        chunks.push(event.data);
+                    });
+                    recorder.addEventListener('stop', () => {
+                        const recording = new Blob(chunks, {
+                            type: mimeType
+                        });
+                        renderRecording(recording, list);
+                        chunks = [];
+                    });
+                    recordButton.removeAttribute('hidden');
+                    recordButton.addEventListener('click', () => {
+                        if (recorder.state === 'inactive') {
+                            recorder.start();
+                            recordButton.innerText = 'Stop';
+                        } else {
+                            recorder.stop();
+                            recordButton.innerText = 'Record';
+                        }
+                    });
+                } catch {
+                    renderError(
+                        'You must allow access to the microphone for functionality'
+                    );
+                }
+            });
+        } else {
+            renderError("Sorry, your browser does not support the MediaRecorder API");
+        }
+    });
+
+    function renderError(message) {
+        const main = document.querySelector('main');
+        main.innerHTML = '<div class="error"><p>${message}</p></div>';
+    }
+
+    function renderRecording(blob, list) {
+        const blobUrl = URL.createObjectURL(blob);
+        const li = document.createElement('li');
+        const audio = document.createElement('audio');
+        const anchor = document.createElement('a');
+        anchor.setAttribute('href', blobUrl);
+        const now = new Date();
+        const title = `recording-${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDay().toString().padStart(2, '0')}--${now.getHours().toString().padStart(2, '0')}-${now.getMinutes().toString().padStart(2, '0')}-${now.getSeconds().toString().padStart(2, '0')}.webm`
+        anchor.setAttribute(
+            'download',
+            title
+        );
+        anchor.setAttribute('style', 'font-size: 14px;');
+        anchor.innerText = 'Download';
+        const save = document.createElement('button');
+        const currentProject = getCurrentProject();
+        const recTitle =  `${currentProject.toString()}-recording-${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDay().toString().padStart(2, '0')}--${now.getHours().toString().padStart(2, '0')}-${now.getMinutes().toString().padStart(2, '0')}-${now.getSeconds().toString().padStart(2, '0')}.webm`
+        save.setAttribute('style', 'font-size: 20px;');
+        save.setAttribute('name', 'save');
+        save.setAttribute('type', 'button');
+        save.innerText = 'Save to Project';
+        save.addEventListener('click', () => {
+            saveRecording(recTitle, blob, currentProject);
+        });
+
+        audio.setAttribute('src', blobUrl);
+        audio.setAttribute('controls', 'controls');
+        li.appendChild(audio);
+        li.appendChild(anchor);
+        li.appendChild(save);
+        list.appendChild(li);
+    }
+
+</script>
+
+<script>
+    $.ajaxSetup({
+        beforeSend: function (xhr, settings) {
+            function getCookie(name) {
+                var cookieValue = null;
+                if (document.cookie && document.cookie != '') {
+                    var cookies = document.cookie.split(';');
+                    for (var i = 0; i < cookies.length; i++) {
+                        var cookie = jQuery.trim(cookies[i]);
+                        // Does this cookie string begin with the name we want?
+                        if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+
+            if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+                // Only send the token to relative URLs i.e. locally.
+                xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+            }
+        }
+    });
+
+    function saveRecording(title, audioBlob, project_name) {
+        $(document).ready(function () {
+            console.log(audioBlob)
+            var fd = new FormData();
+            //fd.append('title', title);
+            fd.append('audio', audioBlob, 'filename');
+            //fd.append('project_name', project_name);
+            $.ajax({
+                type: 'POST',
+                url: 'save_recording/',
+                data: fd,
+                processData: false,
+                contentType: false,
+                cache: false
+            }).done(function (response) {
+                console.log(response);
+            });
+        });
+    }
+
+</script>
+<script>
+    function getCurrentProject() {
+        var project = document.getElementById("YourSongs");
+        var strProject = project.options[project.selectedIndex].text;
+        return strProject;
+    }
+</script>
+
 <script>
     function openEditor() {
         document.getElementById("editor").style.display = "block";
         document.getElementById("YourSongs").addEventListener("change", initAudio)
     }
+
     function closeEditor() {
         document.getElementById("editor").style.display = "none";
     }
+
     function initAudio() {
         var audio, ext, YourSongs;
         ext = ".mp3";
-        pathToAudio = "/media/songs/"
-        audio = pathToAudio + document.getElementById("YourSongs").value + ext;
+        audio = document.getElementById("YourSongs").value;
+        if (audio === "moonlight") {
+            audio = "/media/songs/moonlight" + ext;
+        }
+        else if (audio === "furelise") {
+            audio = "/media/songs/furelise" + ext;
+        }
+        else {
+            audio = "/media/" + document.getElementById("YourSongs").value;
+        }
+
         document.getElementById("playsrc").setAttribute("src", audio);
     }
-    function split() {
-        var seconds, SongSrc;
-        seconds = document.getElementById("splitSec").value;
-        document.getElementById("timesplitext").innerHTML = "Split at " + seconds + " seconds";
-        SongSrc = "/media/songs/" + document.getElementById("YourSongs").value + ".mp3";
-      <!--
-        const ffmpeg = require("js/ffmpeg.js/ffmpeg-mp4.js");
-        ffmpeg({
-            arguments: ["-ss", seconds, "-i", SongSrc, "-acodec", "copy", "first.mp3",],
-            stdin: {},
-            print: {},
-            printErr: {},
-            onExit: {},
-
-        });
-        ffmpeg({
-            arguments: ["-t", seconds, "-i", SongSrc, "-acodec", "copy", "second.mp3",],
-            stdin: {},
-            print: {},
-            printErr: {},
-            onExit: {},
-        });
-        document.getElementById("SBS").setAttribute("src", "first.mp3");
-        document.getElementById("SAS").setAttribute("src", "second.mp3");-->
-        document.getElementById("playAftSplit").className = "audio-displayed";
-        document.getElementById("playBefSplit").className = "audio-displayed";
-    }
+</script>
+<script>
     function stopABLE() {
         document.getElementById("stopRec").disabled = false;
         document.getElementById("startRec").disabled = true;
@@ -447,9 +567,65 @@ body {
     function unstopABLE() {
         document.getElementById("stopRec").disabled = true;
         document.getElementById("startRec").disabled = false;
-
     }
+    var curPlay;
+	function fastTone(){
+	var audio, ext, YourSongs;
+    ext = ".mp3";
+    audio = document.getElementById("YourSongs").value
+        if (audio === "moonlight") {
+            audio = "/media/songs/moonlight" + ext;
+        }
+        else if (audio === "furelise") {
+            audio = "/media/songs/furelise" + ext;
+        }
+        else {
+            audio = "/media/" + document.getElementById("YourSongs").value;
+        }
+
+	var audi = new Tone.Player(audio);
+	curPlay = audi;
+	audi.autostart= true;
+		var pitchUp= new Tone.PitchShift({
+		pitch: 12
+	}).toMaster();
+	audi.connect(pitchUp);
+
+	window.play = function() {
+		Tone.Transport.start();
+	}
+	}
+	function slowTone(){
+	var audio, ext, YourSongs;
+    ext = ".mp3";
+    audio = document.getElementById("YourSongs").value;
+    if (audio === "moonlight") {
+            audio = "/media/songs/moonlight" + ext;
+        }
+        else if (audio === "furelise") {
+            audio = "/media/songs/furelise" + ext;
+        }
+        else {
+            audio = "/media/" + document.getElementById("YourSongs").value;
+        }
+
+	var audi = new Tone.Player(audio);
+	curPlay = audi;
+	audi.autostart= true;
+		var pitchDown= new Tone.PitchShift({
+		pitch: -12
+	}).toMaster();
+	audi.connect(pitchDown);
+
+	window.play = function() {
+		Tone.Transport.start();
+	}
+	}
+	function stopPlayer(){
+    	curPlay.stop();
+	}
 </script>
+
 <!-- sourced from https://github.com/daaain/JSSoundRecorder sound recording library -->
 <script src="js/lib/recorder.js"></script>
 <script src="js/recordLive.js"></script>
